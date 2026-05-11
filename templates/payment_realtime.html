@@ -3,24 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>💳 Payment - Lucky Draw</title>
+    <title>💳 Payment - WinsHaven</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <!-- Razorpay script removed - using manual payment system -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
     <script>
-      // Check if Razorpay script loaded
+      // Manual payment system - no external scripts needed
       window.addEventListener("load", function () {
-        if (typeof Razorpay === "undefined") {
-          console.error("Razorpay script failed to load");
-          document.addEventListener("DOMContentLoaded", function () {
-            addStatusMessage(
-              "Payment gateway not available. Please check your internet connection.",
-              "error"
-            );
-          });
-        } else {
-          console.log("Razorpay script loaded successfully");
-        }
+        console.log("Manual payment system loaded");
       });
     </script>
     <link
@@ -124,7 +114,7 @@
         <div class="flex justify-between items-center py-4">
           <div class="flex items-center space-x-3">
             <i class="fas fa-gift golden-icon text-3xl"></i>
-            <h1 class="text-2xl font-bold warm-brown-text">Lucky Draw</h1>
+            <h1 class="text-2xl font-bold warm-brown-text">WinsHaven</h1>
           </div>
           <div class="warm-brown-light text-sm">
             <i class="fas fa-user mr-2"></i>
@@ -143,7 +133,7 @@
             Complete Your Payment
           </h2>
           <p class="warm-brown-light text-lg">
-            Secure payment powered by Razorpay
+            Manual payment verification system
           </p>
         </div>
 
@@ -242,14 +232,14 @@
                 </div>
               </div>
 
-              <!-- Razorpay Button -->
+              <!-- Manual Payment Button -->
               <button
-                id="razorpay-button"
+                id="manual-payment-button"
                 class="w-full golden-accent text-white font-bold py-4 px-8 rounded-xl btn-hover transition-all duration-300 text-lg flex items-center justify-center space-x-3"
-                onclick="initiatePayment()"
+                onclick="showManualPayment()"
               >
                 <i class="fas fa-rupee-sign mr-2"></i>
-                <span>Pay ₹{{ user_data.total_amount }}</span>
+                <span>Complete Payment ₹{{ user_data.total_amount }}</span>
               </button>
 
               <!-- Fallback Payment Button -->
@@ -269,10 +259,22 @@
                   <i class="fas fa-qrcode golden-icon mr-2"></i>
                   Alternative: UPI Payment
                 </h4>
-                <p class="warm-brown-light text-sm mb-3">
-                  Scan QR code or use UPI ID:
-                  <strong>{{ user_data.upi_id }}</strong>
-                </p>
+                <div class="mb-3">
+                  <p class="warm-brown-light text-sm mb-2">Scan QR code or use UPI ID:</p>
+                  <div class="flex items-center justify-center space-x-3">
+                    <p class="text-lg font-bold golden-icon font-mono" id="upi-id-realtime">
+                      {{ user_data.upi_id }}
+                    </p>
+                    <button
+                      onclick="copyUPIRealtime()"
+                      class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg transition-colors duration-200 flex items-center space-x-2"
+                      title="Copy UPI ID"
+                    >
+                      <i class="fas fa-copy"></i>
+                      <span class="text-sm">Copy</span>
+                    </button>
+                  </div>
+                </div>
                 <img
                   src="{{ url_for('static', filename='images/actual_upi_qr.jpeg') }}"
                   alt="UPI QR Code"
@@ -328,7 +330,7 @@
       class="bg-white/80 backdrop-blur-md border-t border-yellow-200/30 py-4 mt-12"
     >
       <div class="max-w-7xl mx-auto px-4 text-center warm-brown-light text-sm">
-        <p>&copy; 2025 Lucky Draw. All rights reserved.</p>
+        <p>&copy; 2025 WinsHaven. All rights reserved.</p>
       </div>
     </footer>
 
@@ -336,83 +338,57 @@
       // Initialize Socket.IO connection
       const socket = io();
 
-      // Payment configuration
+      // Manual payment configuration
       const paymentConfig = {
-        key: '{{ razorpay_key_id }}',
-        amount: {{ user_data.total_amount * 100 }}, // Amount in paise
+        amount: parseInt('{{ user_data.total_amount }}'),
         currency: 'INR',
-        name: 'Lucky Draw',
-        description: 'Ticket Booking',
-        order_id: '{{ order.id }}',
-        handler: function(response) {
-          console.log('Payment successful:', response);
-          handlePaymentSuccess(response);
-        },
-        prefill: {
-          name: '{{ user_data.name }}',
-          contact: '{{ user_data.mobile }}'
-        },
-        theme: {
-          color: '#ffd700'
-        }
+        name: '{{ user_data.name|e }}',
+        mobile: '{{ user_data.mobile|e }}',
+        upi_id: '{{ user_data.upi_id|e }}'
       };
 
-      // Initialize payment
-      function initiatePayment() {
-        try {
-          console.log('Initiating payment with config:', paymentConfig);
-
-          // Check if Razorpay is loaded
-          if (typeof Razorpay === 'undefined') {
-            console.error('Razorpay not loaded');
-            addStatusMessage('Payment gateway not loaded. Please refresh the page.', 'error');
-            document.getElementById('fallback-button').style.display = 'block';
-            return;
-          }
-
-          const rzp = new Razorpay(paymentConfig);
-
-          // Add error handler
-          rzp.on('payment.failed', function (response) {
-            console.error('Payment failed:', response.error);
-            updatePaymentStatus('failed', 'Payment Failed', 'Payment was not completed');
-            addStatusMessage('Payment failed: ' + response.error.description, 'error');
-          });
-
-          // Open payment window
-          rzp.open();
-
-          // Show real-time status
-          document.getElementById('realtime-status').classList.remove('hidden');
-          addStatusMessage('Payment window opened', 'info');
-
-        } catch (error) {
-          console.error('Error initiating payment:', error);
-          addStatusMessage('Error opening payment window: ' + error.message, 'error');
-          updatePaymentStatus('failed', 'Payment Error', 'Unable to open payment window');
-          document.getElementById('fallback-button').style.display = 'block';
-        }
+      // Show manual payment instructions
+      function showManualPayment() {
+        console.log('Showing manual payment instructions');
+        addStatusMessage('Please complete payment using UPI and enter transaction ID', 'info');
+        
+        // Show payment instructions
+        const instructions = `
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+            <h4 class="font-bold text-blue-800 mb-2">Payment Instructions:</h4>
+            <ol class="list-decimal list-inside text-blue-700 space-y-1">
+              <li>Open your UPI app (PhonePe, Google Pay, Paytm, etc.)</li>
+              <li>Scan the QR code or use UPI ID: <strong>${paymentConfig.upi_id}</strong></li>
+              <li>Enter amount: <strong>₹${paymentConfig.amount}</strong></li>
+              <li>Complete the payment</li>
+              <li>Copy the transaction ID and click "Verify Payment" below</li>
+            </ol>
+          </div>
+        `;
+        
+        document.getElementById('realtime-status').classList.remove('hidden');
+        document.getElementById('status-messages').innerHTML = instructions;
       }
 
-      // Handle payment success
-      function handlePaymentSuccess(response) {
-        console.log('Payment completed:', response);
+      // Handle payment success (manual verification)
+      function handlePaymentSuccess(transactionId) {
+        console.log('Payment completed with transaction ID:', transactionId);
 
         // Update payment status
         updatePaymentStatus('success', 'Payment Successful!', 'Payment completed successfully');
 
         // Send payment completion to server
         socket.emit('payment_completed', {
-          order_id: '{{ order.id }}',
-          payment_id: response.razorpay_payment_id
+          transaction_id: transactionId,
+          amount: paymentConfig.amount
         });
 
-        addStatusMessage('Payment verified with Razorpay', 'success');
+        addStatusMessage('Payment verified manually', 'success');
 
         // Show success message after a delay
         setTimeout(() => {
           document.getElementById('success-message').classList.remove('hidden');
-          document.getElementById('razorpay-button').style.display = 'none';
+          document.getElementById('manual-payment-button').style.display = 'none';
         }, 2000);
       }
 
@@ -468,7 +444,7 @@
 
         // Join payment session
         socket.emit('join_payment_session', {
-          session_id: '{{ order.id }}'
+          session_id: 'manual-payment-session'
         });
       });
 
@@ -485,14 +461,14 @@
       socket.on('payment_success', function(data) {
         console.log('Payment success received:', data);
 
-        if (data.order_id === '{{ order.id }}') {
+        if (data.session_id === 'manual-payment-session') {
           updatePaymentStatus('success', 'Payment Successful!', 'Payment completed and verified');
           addStatusMessage('Payment confirmed by server', 'success');
 
           // Show success message
           setTimeout(() => {
             document.getElementById('success-message').classList.remove('hidden');
-            document.getElementById('razorpay-button').style.display = 'none';
+            document.getElementById('manual-payment-button').style.display = 'none';
           }, 1000);
         }
       });
@@ -506,11 +482,49 @@
 
       // Handle payment errors
       window.addEventListener('error', function(e) {
-        if (e.message.includes('Razorpay')) {
-          updatePaymentStatus('failed', 'Payment Failed', 'An error occurred during payment');
-          addStatusMessage('Payment error: ' + e.message, 'error');
-        }
+        console.error('Payment error:', e.message);
+        updatePaymentStatus('failed', 'Payment Failed', 'An error occurred during payment');
+        addStatusMessage('Payment error: ' + e.message, 'error');
       });
+
+      // Copy UPI ID function for realtime payment
+      function copyUPIRealtime() {
+        const upiId = document.getElementById('upi-id-realtime').textContent.trim();
+        
+        // Create a temporary textarea element
+        const tempTextarea = document.createElement('textarea');
+        tempTextarea.value = upiId;
+        document.body.appendChild(tempTextarea);
+        
+        // Select and copy the text
+        tempTextarea.select();
+        tempTextarea.setSelectionRange(0, 99999); // For mobile devices
+        
+        try {
+          document.execCommand('copy');
+          
+          // Show success message
+          const button = event.target.closest('button');
+          const originalContent = button.innerHTML;
+          button.innerHTML = '<i class="fas fa-check"></i><span class="text-sm">Copied!</span>';
+          button.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+          button.classList.add('bg-green-500', 'hover:bg-green-600');
+          
+          // Reset button after 2 seconds
+          setTimeout(() => {
+            button.innerHTML = originalContent;
+            button.classList.remove('bg-green-500', 'hover:bg-green-600');
+            button.classList.add('bg-blue-500', 'hover:bg-blue-600');
+          }, 2000);
+          
+        } catch (err) {
+          console.error('Failed to copy UPI ID: ', err);
+          alert('Failed to copy UPI ID. Please copy manually: ' + upiId);
+        }
+        
+        // Remove the temporary element
+        document.body.removeChild(tempTextarea);
+      }
 
       // Initialize on page load
       document.addEventListener('DOMContentLoaded', function() {

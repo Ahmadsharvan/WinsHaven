@@ -13,7 +13,7 @@ def generate_upi_qr(upi_id, amount, name, note="Lucky Draw Tickets"):
     Generate UPI QR code
     
     Args:
-        upi_id (str): UPI ID (e.g., 9353539771@pthdfc)
+        upi_id (str): UPI ID (e.g., yourname@bank)
         amount (float): Amount to pay
         name (str): Payee name
         note (str): Payment note
@@ -54,7 +54,7 @@ def generate_static_qr():
     """Generate a static QR code for the main UPI ID"""
     
     # Static UPI ID for the application
-    upi_id = "9353539771@pthdfc"
+    upi_id = "your-upi-id@bank"  # Replace with your actual UPI ID
     
     # Create a generic QR code that can be used for any amount
     upi_url = f"upi://pay?pa={upi_id}&pn=Lucky%20Draw&tn=Ticket%20Payment&cu=INR"
@@ -95,13 +95,13 @@ if __name__ == "__main__":
     print("\n📱 Generating sample QR codes for testing...")
     
     # Sample 1: 1 ticket = ₹5
-    generate_upi_qr("9353539771@pthdfc", 5, "Test User", "1 Ticket")
+    generate_upi_qr("your-upi-id@bank", 5, "Test User", "1 Ticket")
     
     # Sample 2: 5 tickets = ₹25
-    generate_upi_qr("9353539771@pthdfc", 25, "Test User", "5 Tickets")
+    generate_upi_qr("your-upi-id@bank", 25, "Test User", "5 Tickets")
     
     # Sample 3: 10 tickets = ₹50
-    generate_upi_qr("9353539771@pthdfc", 50, "Test User", "10 Tickets")
+    generate_upi_qr("your-upi-id@bank", 50, "Test User", "10 Tickets")
     
     print("\n✅ QR codes generated successfully!")
     print(f"📁 Static QR code: {static_qr}")

@@ -36,10 +36,10 @@
     "available": true
   },
   "0013": {
-    "available": true
+    "available": false
   },
   "0014": {
-    "available": true
+    "available": false
   },
   "0015": {
     "available": true
@@ -51,7 +51,7 @@
     "available": true
   },
   "0018": {
-    "available": true
+    "available": false
   },
   "0019": {
     "available": true
@@ -705,7 +705,7 @@
     "available": true
   },
   "0236": {
-    "available": true
+    "available": false
   },
   "0237": {
     "available": true
@@ -1497,6 +1497,1506 @@
     "available": true
   },
   "0500": {
+    "available": true
+  },
+  "0501": {
+    "available": true
+  },
+  "0502": {
+    "available": true
+  },
+  "0503": {
+    "available": true
+  },
+  "0504": {
+    "available": true
+  },
+  "0505": {
+    "available": true
+  },
+  "0506": {
+    "available": true
+  },
+  "0507": {
+    "available": true
+  },
+  "0508": {
+    "available": true
+  },
+  "0509": {
+    "available": true
+  },
+  "0510": {
+    "available": true
+  },
+  "0511": {
+    "available": true
+  },
+  "0512": {
+    "available": true
+  },
+  "0513": {
+    "available": true
+  },
+  "0514": {
+    "available": true
+  },
+  "0515": {
+    "available": true
+  },
+  "0516": {
+    "available": true
+  },
+  "0517": {
+    "available": true
+  },
+  "0518": {
+    "available": true
+  },
+  "0519": {
+    "available": true
+  },
+  "0520": {
+    "available": true
+  },
+  "0521": {
+    "available": true
+  },
+  "0522": {
+    "available": true
+  },
+  "0523": {
+    "available": true
+  },
+  "0524": {
+    "available": true
+  },
+  "0525": {
+    "available": true
+  },
+  "0526": {
+    "available": true
+  },
+  "0527": {
+    "available": true
+  },
+  "0528": {
+    "available": true
+  },
+  "0529": {
+    "available": true
+  },
+  "0530": {
+    "available": true
+  },
+  "0531": {
+    "available": true
+  },
+  "0532": {
+    "available": true
+  },
+  "0533": {
+    "available": true
+  },
+  "0534": {
+    "available": true
+  },
+  "0535": {
+    "available": true
+  },
+  "0536": {
+    "available": true
+  },
+  "0537": {
+    "available": true
+  },
+  "0538": {
+    "available": true
+  },
+  "0539": {
+    "available": true
+  },
+  "0540": {
+    "available": true
+  },
+  "0541": {
+    "available": true
+  },
+  "0542": {
+    "available": true
+  },
+  "0543": {
+    "available": true
+  },
+  "0544": {
+    "available": true
+  },
+  "0545": {
+    "available": true
+  },
+  "0546": {
+    "available": true
+  },
+  "0547": {
+    "available": true
+  },
+  "0548": {
+    "available": true
+  },
+  "0549": {
+    "available": true
+  },
+  "0550": {
+    "available": true
+  },
+  "0551": {
+    "available": true
+  },
+  "0552": {
+    "available": true
+  },
+  "0553": {
+    "available": true
+  },
+  "0554": {
+    "available": true
+  },
+  "0555": {
+    "available": true
+  },
+  "0556": {
+    "available": true
+  },
+  "0557": {
+    "available": true
+  },
+  "0558": {
+    "available": true
+  },
+  "0559": {
+    "available": true
+  },
+  "0560": {
+    "available": true
+  },
+  "0561": {
+    "available": true
+  },
+  "0562": {
+    "available": true
+  },
+  "0563": {
+    "available": true
+  },
+  "0564": {
+    "available": true
+  },
+  "0565": {
+    "available": true
+  },
+  "0566": {
+    "available": true
+  },
+  "0567": {
+    "available": true
+  },
+  "0568": {
+    "available": true
+  },
+  "0569": {
+    "available": true
+  },
+  "0570": {
+    "available": true
+  },
+  "0571": {
+    "available": true
+  },
+  "0572": {
+    "available": true
+  },
+  "0573": {
+    "available": true
+  },
+  "0574": {
+    "available": true
+  },
+  "0575": {
+    "available": true
+  },
+  "0576": {
+    "available": true
+  },
+  "0577": {
+    "available": true
+  },
+  "0578": {
+    "available": true
+  },
+  "0579": {
+    "available": true
+  },
+  "0580": {
+    "available": true
+  },
+  "0581": {
+    "available": true
+  },
+  "0582": {
+    "available": true
+  },
+  "0583": {
+    "available": true
+  },
+  "0584": {
+    "available": true
+  },
+  "0585": {
+    "available": true
+  },
+  "0586": {
+    "available": true
+  },
+  "0587": {
+    "available": true
+  },
+  "0588": {
+    "available": true
+  },
+  "0589": {
+    "available": true
+  },
+  "0590": {
+    "available": true
+  },
+  "0591": {
+    "available": true
+  },
+  "0592": {
+    "available": true
+  },
+  "0593": {
+    "available": true
+  },
+  "0594": {
+    "available": true
+  },
+  "0595": {
+    "available": true
+  },
+  "0596": {
+    "available": true
+  },
+  "0597": {
+    "available": true
+  },
+  "0598": {
+    "available": true
+  },
+  "0599": {
+    "available": true
+  },
+  "0600": {
+    "available": true
+  },
+  "0601": {
+    "available": true
+  },
+  "0602": {
+    "available": true
+  },
+  "0603": {
+    "available": true
+  },
+  "0604": {
+    "available": true
+  },
+  "0605": {
+    "available": true
+  },
+  "0606": {
+    "available": true
+  },
+  "0607": {
+    "available": true
+  },
+  "0608": {
+    "available": true
+  },
+  "0609": {
+    "available": true
+  },
+  "0610": {
+    "available": true
+  },
+  "0611": {
+    "available": true
+  },
+  "0612": {
+    "available": true
+  },
+  "0613": {
+    "available": true
+  },
+  "0614": {
+    "available": true
+  },
+  "0615": {
+    "available": true
+  },
+  "0616": {
+    "available": true
+  },
+  "0617": {
+    "available": true
+  },
+  "0618": {
+    "available": true
+  },
+  "0619": {
+    "available": true
+  },
+  "0620": {
+    "available": true
+  },
+  "0621": {
+    "available": true
+  },
+  "0622": {
+    "available": true
+  },
+  "0623": {
+    "available": true
+  },
+  "0624": {
+    "available": true
+  },
+  "0625": {
+    "available": true
+  },
+  "0626": {
+    "available": true
+  },
+  "0627": {
+    "available": true
+  },
+  "0628": {
+    "available": true
+  },
+  "0629": {
+    "available": true
+  },
+  "0630": {
+    "available": true
+  },
+  "0631": {
+    "available": true
+  },
+  "0632": {
+    "available": true
+  },
+  "0633": {
+    "available": true
+  },
+  "0634": {
+    "available": true
+  },
+  "0635": {
+    "available": true
+  },
+  "0636": {
+    "available": true
+  },
+  "0637": {
+    "available": true
+  },
+  "0638": {
+    "available": true
+  },
+  "0639": {
+    "available": true
+  },
+  "0640": {
+    "available": true
+  },
+  "0641": {
+    "available": true
+  },
+  "0642": {
+    "available": true
+  },
+  "0643": {
+    "available": true
+  },
+  "0644": {
+    "available": true
+  },
+  "0645": {
+    "available": true
+  },
+  "0646": {
+    "available": true
+  },
+  "0647": {
+    "available": true
+  },
+  "0648": {
+    "available": true
+  },
+  "0649": {
+    "available": true
+  },
+  "0650": {
+    "available": true
+  },
+  "0651": {
+    "available": true
+  },
+  "0652": {
+    "available": true
+  },
+  "0653": {
+    "available": true
+  },
+  "0654": {
+    "available": true
+  },
+  "0655": {
+    "available": true
+  },
+  "0656": {
+    "available": true
+  },
+  "0657": {
+    "available": true
+  },
+  "0658": {
+    "available": true
+  },
+  "0659": {
+    "available": true
+  },
+  "0660": {
+    "available": true
+  },
+  "0661": {
+    "available": true
+  },
+  "0662": {
+    "available": true
+  },
+  "0663": {
+    "available": true
+  },
+  "0664": {
+    "available": true
+  },
+  "0665": {
+    "available": true
+  },
+  "0666": {
+    "available": true
+  },
+  "0667": {
+    "available": true
+  },
+  "0668": {
+    "available": true
+  },
+  "0669": {
+    "available": true
+  },
+  "0670": {
+    "available": true
+  },
+  "0671": {
+    "available": true
+  },
+  "0672": {
+    "available": true
+  },
+  "0673": {
+    "available": true
+  },
+  "0674": {
+    "available": true
+  },
+  "0675": {
+    "available": true
+  },
+  "0676": {
+    "available": true
+  },
+  "0677": {
+    "available": true
+  },
+  "0678": {
+    "available": true
+  },
+  "0679": {
+    "available": true
+  },
+  "0680": {
+    "available": true
+  },
+  "0681": {
+    "available": true
+  },
+  "0682": {
+    "available": true
+  },
+  "0683": {
+    "available": true
+  },
+  "0684": {
+    "available": true
+  },
+  "0685": {
+    "available": true
+  },
+  "0686": {
+    "available": true
+  },
+  "0687": {
+    "available": true
+  },
+  "0688": {
+    "available": true
+  },
+  "0689": {
+    "available": true
+  },
+  "0690": {
+    "available": true
+  },
+  "0691": {
+    "available": true
+  },
+  "0692": {
+    "available": true
+  },
+  "0693": {
+    "available": true
+  },
+  "0694": {
+    "available": true
+  },
+  "0695": {
+    "available": true
+  },
+  "0696": {
+    "available": true
+  },
+  "0697": {
+    "available": true
+  },
+  "0698": {
+    "available": true
+  },
+  "0699": {
+    "available": true
+  },
+  "0700": {
+    "available": true
+  },
+  "0701": {
+    "available": true
+  },
+  "0702": {
+    "available": true
+  },
+  "0703": {
+    "available": true
+  },
+  "0704": {
+    "available": true
+  },
+  "0705": {
+    "available": true
+  },
+  "0706": {
+    "available": true
+  },
+  "0707": {
+    "available": true
+  },
+  "0708": {
+    "available": true
+  },
+  "0709": {
+    "available": true
+  },
+  "0710": {
+    "available": true
+  },
+  "0711": {
+    "available": true
+  },
+  "0712": {
+    "available": true
+  },
+  "0713": {
+    "available": true
+  },
+  "0714": {
+    "available": true
+  },
+  "0715": {
+    "available": true
+  },
+  "0716": {
+    "available": true
+  },
+  "0717": {
+    "available": true
+  },
+  "0718": {
+    "available": true
+  },
+  "0719": {
+    "available": true
+  },
+  "0720": {
+    "available": true
+  },
+  "0721": {
+    "available": true
+  },
+  "0722": {
+    "available": true
+  },
+  "0723": {
+    "available": true
+  },
+  "0724": {
+    "available": true
+  },
+  "0725": {
+    "available": true
+  },
+  "0726": {
+    "available": true
+  },
+  "0727": {
+    "available": true
+  },
+  "0728": {
+    "available": true
+  },
+  "0729": {
+    "available": true
+  },
+  "0730": {
+    "available": true
+  },
+  "0731": {
+    "available": true
+  },
+  "0732": {
+    "available": true
+  },
+  "0733": {
+    "available": true
+  },
+  "0734": {
+    "available": true
+  },
+  "0735": {
+    "available": true
+  },
+  "0736": {
+    "available": true
+  },
+  "0737": {
+    "available": true
+  },
+  "0738": {
+    "available": true
+  },
+  "0739": {
+    "available": true
+  },
+  "0740": {
+    "available": true
+  },
+  "0741": {
+    "available": true
+  },
+  "0742": {
+    "available": true
+  },
+  "0743": {
+    "available": true
+  },
+  "0744": {
+    "available": true
+  },
+  "0745": {
+    "available": true
+  },
+  "0746": {
+    "available": true
+  },
+  "0747": {
+    "available": true
+  },
+  "0748": {
+    "available": true
+  },
+  "0749": {
+    "available": true
+  },
+  "0750": {
+    "available": true
+  },
+  "0751": {
+    "available": true
+  },
+  "0752": {
+    "available": true
+  },
+  "0753": {
+    "available": true
+  },
+  "0754": {
+    "available": true
+  },
+  "0755": {
+    "available": true
+  },
+  "0756": {
+    "available": true
+  },
+  "0757": {
+    "available": true
+  },
+  "0758": {
+    "available": true
+  },
+  "0759": {
+    "available": true
+  },
+  "0760": {
+    "available": true
+  },
+  "0761": {
+    "available": true
+  },
+  "0762": {
+    "available": true
+  },
+  "0763": {
+    "available": true
+  },
+  "0764": {
+    "available": true
+  },
+  "0765": {
+    "available": true
+  },
+  "0766": {
+    "available": true
+  },
+  "0767": {
+    "available": true
+  },
+  "0768": {
+    "available": true
+  },
+  "0769": {
+    "available": true
+  },
+  "0770": {
+    "available": true
+  },
+  "0771": {
+    "available": true
+  },
+  "0772": {
+    "available": true
+  },
+  "0773": {
+    "available": true
+  },
+  "0774": {
+    "available": true
+  },
+  "0775": {
+    "available": true
+  },
+  "0776": {
+    "available": true
+  },
+  "0777": {
+    "available": true
+  },
+  "0778": {
+    "available": true
+  },
+  "0779": {
+    "available": true
+  },
+  "0780": {
+    "available": true
+  },
+  "0781": {
+    "available": true
+  },
+  "0782": {
+    "available": true
+  },
+  "0783": {
+    "available": true
+  },
+  "0784": {
+    "available": true
+  },
+  "0785": {
+    "available": true
+  },
+  "0786": {
+    "available": true
+  },
+  "0787": {
+    "available": true
+  },
+  "0788": {
+    "available": true
+  },
+  "0789": {
+    "available": true
+  },
+  "0790": {
+    "available": true
+  },
+  "0791": {
+    "available": true
+  },
+  "0792": {
+    "available": true
+  },
+  "0793": {
+    "available": true
+  },
+  "0794": {
+    "available": true
+  },
+  "0795": {
+    "available": true
+  },
+  "0796": {
+    "available": true
+  },
+  "0797": {
+    "available": true
+  },
+  "0798": {
+    "available": true
+  },
+  "0799": {
+    "available": true
+  },
+  "0800": {
+    "available": true
+  },
+  "0801": {
+    "available": true
+  },
+  "0802": {
+    "available": true
+  },
+  "0803": {
+    "available": true
+  },
+  "0804": {
+    "available": true
+  },
+  "0805": {
+    "available": true
+  },
+  "0806": {
+    "available": true
+  },
+  "0807": {
+    "available": true
+  },
+  "0808": {
+    "available": true
+  },
+  "0809": {
+    "available": true
+  },
+  "0810": {
+    "available": true
+  },
+  "0811": {
+    "available": true
+  },
+  "0812": {
+    "available": true
+  },
+  "0813": {
+    "available": true
+  },
+  "0814": {
+    "available": true
+  },
+  "0815": {
+    "available": true
+  },
+  "0816": {
+    "available": true
+  },
+  "0817": {
+    "available": true
+  },
+  "0818": {
+    "available": true
+  },
+  "0819": {
+    "available": true
+  },
+  "0820": {
+    "available": true
+  },
+  "0821": {
+    "available": true
+  },
+  "0822": {
+    "available": true
+  },
+  "0823": {
+    "available": true
+  },
+  "0824": {
+    "available": true
+  },
+  "0825": {
+    "available": true
+  },
+  "0826": {
+    "available": true
+  },
+  "0827": {
+    "available": true
+  },
+  "0828": {
+    "available": true
+  },
+  "0829": {
+    "available": true
+  },
+  "0830": {
+    "available": true
+  },
+  "0831": {
+    "available": true
+  },
+  "0832": {
+    "available": true
+  },
+  "0833": {
+    "available": true
+  },
+  "0834": {
+    "available": true
+  },
+  "0835": {
+    "available": true
+  },
+  "0836": {
+    "available": true
+  },
+  "0837": {
+    "available": true
+  },
+  "0838": {
+    "available": true
+  },
+  "0839": {
+    "available": true
+  },
+  "0840": {
+    "available": true
+  },
+  "0841": {
+    "available": true
+  },
+  "0842": {
+    "available": true
+  },
+  "0843": {
+    "available": true
+  },
+  "0844": {
+    "available": true
+  },
+  "0845": {
+    "available": true
+  },
+  "0846": {
+    "available": true
+  },
+  "0847": {
+    "available": true
+  },
+  "0848": {
+    "available": true
+  },
+  "0849": {
+    "available": true
+  },
+  "0850": {
+    "available": true
+  },
+  "0851": {
+    "available": true
+  },
+  "0852": {
+    "available": true
+  },
+  "0853": {
+    "available": true
+  },
+  "0854": {
+    "available": true
+  },
+  "0855": {
+    "available": true
+  },
+  "0856": {
+    "available": true
+  },
+  "0857": {
+    "available": true
+  },
+  "0858": {
+    "available": true
+  },
+  "0859": {
+    "available": true
+  },
+  "0860": {
+    "available": true
+  },
+  "0861": {
+    "available": true
+  },
+  "0862": {
+    "available": true
+  },
+  "0863": {
+    "available": true
+  },
+  "0864": {
+    "available": true
+  },
+  "0865": {
+    "available": true
+  },
+  "0866": {
+    "available": true
+  },
+  "0867": {
+    "available": true
+  },
+  "0868": {
+    "available": true
+  },
+  "0869": {
+    "available": true
+  },
+  "0870": {
+    "available": true
+  },
+  "0871": {
+    "available": true
+  },
+  "0872": {
+    "available": true
+  },
+  "0873": {
+    "available": true
+  },
+  "0874": {
+    "available": true
+  },
+  "0875": {
+    "available": true
+  },
+  "0876": {
+    "available": true
+  },
+  "0877": {
+    "available": true
+  },
+  "0878": {
+    "available": true
+  },
+  "0879": {
+    "available": true
+  },
+  "0880": {
+    "available": true
+  },
+  "0881": {
+    "available": true
+  },
+  "0882": {
+    "available": true
+  },
+  "0883": {
+    "available": true
+  },
+  "0884": {
+    "available": true
+  },
+  "0885": {
+    "available": true
+  },
+  "0886": {
+    "available": true
+  },
+  "0887": {
+    "available": true
+  },
+  "0888": {
+    "available": true
+  },
+  "0889": {
+    "available": true
+  },
+  "0890": {
+    "available": true
+  },
+  "0891": {
+    "available": true
+  },
+  "0892": {
+    "available": true
+  },
+  "0893": {
+    "available": true
+  },
+  "0894": {
+    "available": true
+  },
+  "0895": {
+    "available": true
+  },
+  "0896": {
+    "available": true
+  },
+  "0897": {
+    "available": true
+  },
+  "0898": {
+    "available": true
+  },
+  "0899": {
+    "available": true
+  },
+  "0900": {
+    "available": true
+  },
+  "0901": {
+    "available": true
+  },
+  "0902": {
+    "available": true
+  },
+  "0903": {
+    "available": true
+  },
+  "0904": {
+    "available": true
+  },
+  "0905": {
+    "available": true
+  },
+  "0906": {
+    "available": true
+  },
+  "0907": {
+    "available": true
+  },
+  "0908": {
+    "available": true
+  },
+  "0909": {
+    "available": true
+  },
+  "0910": {
+    "available": true
+  },
+  "0911": {
+    "available": true
+  },
+  "0912": {
+    "available": true
+  },
+  "0913": {
+    "available": true
+  },
+  "0914": {
+    "available": true
+  },
+  "0915": {
+    "available": true
+  },
+  "0916": {
+    "available": true
+  },
+  "0917": {
+    "available": true
+  },
+  "0918": {
+    "available": true
+  },
+  "0919": {
+    "available": true
+  },
+  "0920": {
+    "available": true
+  },
+  "0921": {
+    "available": true
+  },
+  "0922": {
+    "available": true
+  },
+  "0923": {
+    "available": true
+  },
+  "0924": {
+    "available": true
+  },
+  "0925": {
+    "available": true
+  },
+  "0926": {
+    "available": true
+  },
+  "0927": {
+    "available": true
+  },
+  "0928": {
+    "available": true
+  },
+  "0929": {
+    "available": true
+  },
+  "0930": {
+    "available": true
+  },
+  "0931": {
+    "available": true
+  },
+  "0932": {
+    "available": true
+  },
+  "0933": {
+    "available": true
+  },
+  "0934": {
+    "available": true
+  },
+  "0935": {
+    "available": true
+  },
+  "0936": {
+    "available": true
+  },
+  "0937": {
+    "available": true
+  },
+  "0938": {
+    "available": true
+  },
+  "0939": {
+    "available": true
+  },
+  "0940": {
+    "available": true
+  },
+  "0941": {
+    "available": true
+  },
+  "0942": {
+    "available": true
+  },
+  "0943": {
+    "available": true
+  },
+  "0944": {
+    "available": true
+  },
+  "0945": {
+    "available": true
+  },
+  "0946": {
+    "available": true
+  },
+  "0947": {
+    "available": true
+  },
+  "0948": {
+    "available": true
+  },
+  "0949": {
+    "available": true
+  },
+  "0950": {
+    "available": true
+  },
+  "0951": {
+    "available": true
+  },
+  "0952": {
+    "available": true
+  },
+  "0953": {
+    "available": true
+  },
+  "0954": {
+    "available": true
+  },
+  "0955": {
+    "available": true
+  },
+  "0956": {
+    "available": true
+  },
+  "0957": {
+    "available": true
+  },
+  "0958": {
+    "available": true
+  },
+  "0959": {
+    "available": true
+  },
+  "0960": {
+    "available": true
+  },
+  "0961": {
+    "available": true
+  },
+  "0962": {
+    "available": true
+  },
+  "0963": {
+    "available": true
+  },
+  "0964": {
+    "available": true
+  },
+  "0965": {
+    "available": true
+  },
+  "0966": {
+    "available": true
+  },
+  "0967": {
+    "available": true
+  },
+  "0968": {
+    "available": true
+  },
+  "0969": {
+    "available": true
+  },
+  "0970": {
+    "available": true
+  },
+  "0971": {
+    "available": true
+  },
+  "0972": {
+    "available": true
+  },
+  "0973": {
+    "available": true
+  },
+  "0974": {
+    "available": true
+  },
+  "0975": {
+    "available": true
+  },
+  "0976": {
+    "available": true
+  },
+  "0977": {
+    "available": true
+  },
+  "0978": {
+    "available": true
+  },
+  "0979": {
+    "available": true
+  },
+  "0980": {
+    "available": true
+  },
+  "0981": {
+    "available": true
+  },
+  "0982": {
+    "available": true
+  },
+  "0983": {
+    "available": true
+  },
+  "0984": {
+    "available": true
+  },
+  "0985": {
+    "available": true
+  },
+  "0986": {
+    "available": true
+  },
+  "0987": {
+    "available": true
+  },
+  "0988": {
+    "available": true
+  },
+  "0989": {
+    "available": true
+  },
+  "0990": {
+    "available": true
+  },
+  "0991": {
+    "available": true
+  },
+  "0992": {
+    "available": true
+  },
+  "0993": {
+    "available": true
+  },
+  "0994": {
+    "available": true
+  },
+  "0995": {
+    "available": true
+  },
+  "0996": {
+    "available": true
+  },
+  "0997": {
+    "available": true
+  },
+  "0998": {
+    "available": true
+  },
+  "0999": {
+    "available": true
+  },
+  "1000": {
     "available": true
   }
 }

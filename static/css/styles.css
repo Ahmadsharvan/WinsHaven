@@ -25,6 +25,7 @@
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -36,6 +37,7 @@
         opacity: 0;
         transform: translateX(-30px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -47,6 +49,7 @@
         opacity: 0;
         transform: translateX(30px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -58,13 +61,16 @@
         opacity: 0;
         transform: scale(0.3);
     }
+
     50% {
         opacity: 1;
         transform: scale(1.05);
     }
+
     70% {
         transform: scale(0.9);
     }
+
     100% {
         opacity: 1;
         transform: scale(1);
@@ -89,11 +95,25 @@
 }
 
 /* Staggered animations for ticket grid */
-.ticket-card:nth-child(1) { animation-delay: 0.1s; }
-.ticket-card:nth-child(2) { animation-delay: 0.2s; }
-.ticket-card:nth-child(3) { animation-delay: 0.3s; }
-.ticket-card:nth-child(4) { animation-delay: 0.4s; }
-.ticket-card:nth-child(5) { animation-delay: 0.5s; }
+.ticket-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.ticket-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.ticket-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.ticket-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.ticket-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
 
 /* Enhanced hover effects */
 .ticket-card:hover:not(.booked) {
@@ -112,8 +132,13 @@
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Enhanced button effects */
@@ -174,11 +199,11 @@
     .no-print {
         display: none !important;
     }
-    
+
     .print-only {
         display: block !important;
     }
-    
+
     body {
         background: white !important;
         color: black !important;
@@ -209,11 +234,11 @@
     .gradient-bg {
         background: #000000 !important;
     }
-    
+
     .text-white {
         color: #ffffff !important;
     }
-    
+
     .border-white\/20 {
         border-color: #ffffff !important;
     }
@@ -221,6 +246,7 @@
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -269,9 +295,17 @@
 }
 
 @keyframes successPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* Error state animations */
@@ -280,7 +314,17 @@
 }
 
 @keyframes errorShake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
 }

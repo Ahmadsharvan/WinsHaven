@@ -3,60 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>✅ Booking Confirmed - Lucky Draw</title>
+    <title>✅ Booking Confirmed - WinsHaven</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/premium.css') }}" />
     <style>
       .gradient-bg {
-        background: #f5f0e6; /* Darker warm beige background */
+        background: linear-gradient(135deg, #001F3F 0%, #0D1B2A 50%, #1B263B 100%);
       }
+
       .card-glow {
-        box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
-        background: #f8f5ef; /* Slightly darker beige for cards */
+        background: rgba(27, 38, 59, 0.8) !important;
+        border: 1px solid rgba(0, 212, 255, 0.2) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
       }
+
       .success-animation {
-        animation: successPulse 2s ease-in-out;
+        animation: slideUp 0.6s ease-out;
       }
-      @keyframes successPulse {
-        0% {
-          transform: scale(0.8);
-          opacity: 0;
-        }
-        50% {
-          transform: scale(1.1);
-        }
-        100% {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
+
       .ticket-badge {
-        background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
-        animation: ticketFloat 3s ease-in-out infinite;
+        background: linear-gradient(135deg, #00D4FF 0%, #00A8E8 100%);
+        color: #FFFFFF;
+        animation: float-animation 3s ease-in-out infinite;
       }
-      @keyframes ticketFloat {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
+
       .btn-hover:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 212, 255, 0.3);
       }
+
       .confetti {
         position: absolute;
         width: 10px;
         height: 10px;
-        background: #ffd700;
+        background: #00D4FF;
         animation: confettiFall 3s linear infinite;
       }
+
       @keyframes confettiFall {
         0% {
           transform: translateY(-100vh) rotate(0deg);
@@ -67,21 +55,22 @@
           opacity: 0;
         }
       }
+
       .warm-brown-text {
-        color: #5c3a21; /* Warm brown for main text */
+        color: #FFFFFF;
       }
+
       .warm-brown-light {
-        color: #8b6f5c; /* Lighter warm brown for secondary text */
+        color: #D0D0D0;
       }
+
       .golden-accent {
-        background: linear-gradient(
-          135deg,
-          #ffd700 0%,
-          #ffa500 100%
-        ); /* Golden yellow to orange */
+        background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+        color: #000;
       }
+
       .golden-icon {
-        color: #ffd700; /* Golden yellow for icons */
+        color: #FFFFFF;
       }
     </style>
   </head>
@@ -91,13 +80,14 @@
 
     <!-- Navigation -->
     <nav
-      class="bg-white/80 backdrop-blur-md border-b border-yellow-200/30 relative z-10"
+      class="border-b border-white/15 backdrop-blur-md relative z-10"
+      style="background: rgba(15, 20, 25, 0.95);"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center py-4">
           <div class="flex items-center space-x-3">
             <i class="fas fa-gift golden-icon text-3xl"></i>
-            <h1 class="text-2xl font-bold warm-brown-text">Lucky Draw</h1>
+            <h1 class="text-2xl font-bold warm-brown-text">WinsHaven</h1>
           </div>
           <div class="warm-brown-light text-sm">
             <i class="fas fa-calendar-alt mr-2"></i>
@@ -109,9 +99,9 @@
 
     <!-- Main Content -->
     <div
-      class="flex items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative z-10"
+      class="flex items-start justify-center min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative z-10"
     >
-      <div class="max-w-4xl w-full space-y-8">
+      <div class="max-w-6xl w-full space-y-6">
         <!-- Success Header -->
         <div class="text-center success-animation">
           <div
@@ -129,96 +119,108 @@
 
         <!-- Booking Details -->
         <div
-          class="card-glow backdrop-blur-md rounded-2xl p-8 border border-yellow-200/30"
+          class="card-glow backdrop-blur-md rounded-2xl p-4 border border-yellow-200/30"
         >
-          <h3 class="text-2xl font-bold warm-brown-text mb-6 flex items-center">
+          <h3 class="text-xl font-bold warm-brown-text mb-4 flex items-center">
             <i class="fas fa-receipt mr-3 golden-icon"></i>
             Booking Details
           </h3>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="space-y-4">
-              <div
-                class="flex justify-between items-center py-3 border-b border-yellow-200/30"
-              >
-                <span class="warm-brown-light">Customer Name:</span>
-                <span class="warm-brown-text font-semibold text-lg"
-                  >{{ user_data.name }}</span
-                >
-              </div>
+          <!-- Customer Information -->
+          <div class="mb-4">
+            <h4 class="text-base font-semibold warm-brown-text mb-3 flex items-center">
+              <i class="fas fa-user mr-2 text-blue-500"></i>
+              Customer Information
+            </h4>
+            
+            <div class="bg-white/70 rounded-lg p-3">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="flex flex-col">
+                  <span class="warm-brown-light font-medium text-xs mb-1">Full Name</span>
+                  <span class="warm-brown-text font-semibold text-base break-words"
+                    >{{ user_data.name }}</span
+                  >
+                </div>
 
-              <div
-                class="flex justify-between items-center py-3 border-b border-yellow-200/30"
-              >
-                <span class="warm-brown-light">Mobile Number:</span>
-                <span class="warm-brown-text font-semibold text-lg"
-                  >{{ user_data.mobile }}</span
-                >
-              </div>
+                <div class="flex flex-col">
+                  <span class="warm-brown-light font-medium text-xs mb-1">Mobile Number</span>
+                  <span class="warm-brown-text font-semibold text-base"
+                    >{{ user_data.mobile }}</span
+                  >
+                </div>
 
-              <div
-                class="flex justify-between items-center py-3 border-b border-yellow-200/30"
-              >
-                <span class="warm-brown-light">Booking Date:</span>
-                <span
-                  class="warm-brown-text font-semibold text-lg"
-                  id="booking-date"
-                ></span>
-              </div>
-
-              <div
-                class="flex justify-between items-center py-3 border-b border-yellow-200/30"
-              >
-                <span class="warm-brown-light">Payment Status:</span>
-                <span
-                  class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold"
-                >
-                  <i class="fas fa-check mr-1"></i>Paid
-                </span>
+                <div class="flex flex-col">
+                  <span class="warm-brown-light font-medium text-xs mb-1">Booking Date</span>
+                  <span
+                    class="warm-brown-text font-semibold text-base"
+                    id="booking-date"
+                  ></span>
+                </div>
               </div>
             </div>
+          </div>
 
-            <div class="space-y-4">
-              <div
-                class="flex justify-between items-center py-3 border-b border-yellow-200/30"
-              >
-                <span class="warm-brown-light">Total Tickets:</span>
-                <span class="warm-brown-text font-semibold text-lg"
-                  >{{ user_data.tickets|length }}</span
-                >
+          <!-- Payment Information -->
+          <div class="mb-4">
+            <h4 class="text-base font-semibold warm-brown-text mb-3 flex items-center">
+              <i class="fas fa-credit-card mr-2 text-green-500"></i>
+              Payment Information
+            </h4>
+            
+            <div class="bg-white/70 rounded-lg p-3">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="flex flex-col">
+                  <span class="warm-brown-light font-medium text-xs mb-1">Total Tickets</span>
+                  <span class="warm-brown-text font-semibold text-lg"
+                    >{{ user_data.tickets|length }}</span
+                  >
+                </div>
+
+                <div class="flex flex-col">
+                  <span class="warm-brown-light font-medium text-xs mb-1">Ticket Price</span>
+                  <span class="warm-brown-text font-semibold text-sm">₹50 per ticket</span>
+                </div>
+
+                <div class="flex flex-col">
+                  <span class="warm-brown-light font-medium text-xs mb-1">Total Amount</span>
+                  <span class="text-2xl font-bold golden-icon"
+                    >₹{{ user_data.total_amount }}</span
+                  >
+                </div>
               </div>
-
-              <div
-                class="flex justify-between items-center py-3 border-b border-yellow-200/30"
-              >
-                <span class="warm-brown-light">Total Amount:</span>
-                <span class="text-2xl font-bold golden-icon"
-                  >₹{{ user_data.total_amount }}</span
-                >
+              
+              <div class="mt-3 pt-3 border-t">
+                <div class="flex justify-between items-center">
+                  <span class="warm-brown-light font-medium text-xs">Payment Status</span>
+                  <span
+                    class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold"
+                  >
+                    <i class="fas fa-check mr-1"></i>Paid
+                  </span>
+                </div>
               </div>
+            </div>
+          </div>
 
-              <div
-                class="flex justify-between items-center py-3 border-b border-yellow-200/30"
-              >
-                <span class="warm-brown-light">Ticket Price:</span>
-                <span class="warm-brown-text font-semibold">₹5 per ticket</span>
-              </div>
-
-              <div
-                class="flex justify-between items-center py-3 border-b border-yellow-200/30"
-              >
-                <span class="warm-brown-light">Transaction Reference:</span>
-                <span class="warm-brown-text font-mono text-sm"
+          <!-- Transaction Details -->
+          <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-3">
+            <h4 class="text-base font-semibold warm-brown-text mb-3 flex items-center">
+              <i class="fas fa-receipt mr-2 text-purple-500"></i>
+              Transaction Details
+            </h4>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="flex flex-col">
+                <span class="warm-brown-light font-medium text-xs mb-1">Transaction Reference</span>
+                <span class="warm-brown-text font-mono text-xs bg-white px-2 py-1 rounded border break-all"
                   >{{ user_data.transaction_ref }}</span
                 >
               </div>
 
-              <div
-                class="flex justify-between items-center py-3 border-b border-yellow-200/30"
-              >
-                <span class="warm-brown-light">Booking ID:</span>
+              <div class="flex flex-col">
+                <span class="warm-brown-light font-medium text-xs mb-1">Booking ID</span>
                 <span
-                  class="warm-brown-text font-mono text-sm"
+                  class="warm-brown-text font-mono text-xs bg-white px-2 py-1 rounded border"
                   id="booking-id"
                 ></span>
               </div>
@@ -228,30 +230,48 @@
 
         <!-- Selected Tickets -->
         <div
-          class="card-glow backdrop-blur-md rounded-2xl p-8 border border-yellow-200/30"
+          class="card-glow backdrop-blur-md rounded-2xl p-4 border border-yellow-200/30"
         >
-          <h3 class="text-2xl font-bold warm-brown-text mb-6 flex items-center">
+          <h3 class="text-xl font-bold warm-brown-text mb-4 flex items-center">
             <i class="fas fa-ticket-alt mr-3 golden-icon"></i>
             Your Lucky Tickets
           </h3>
 
-          <div
-            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
-          >
-            {% for ticket in user_data.tickets %}
-            <div
-              class="ticket-badge text-center p-4 rounded-xl text-black font-bold"
-            >
-              <div class="text-2xl mb-2">
-                <i class="fas fa-ticket-alt"></i>
-              </div>
-              <div class="text-lg font-mono">{{ ticket }}</div>
+          <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-3 mb-4">
+            <div class="text-center mb-3">
+              <span class="text-base warm-brown-text font-semibold">
+                You have selected <span class="text-xl font-bold golden-icon">{{ user_data.tickets|length }}</span> tickets
+              </span>
             </div>
-            {% endfor %}
+            
+            <!-- Scrollable ticket container -->
+            <div class="max-h-60 overflow-y-auto border border-yellow-200/50 rounded-lg p-3 bg-white/50">
+              <div
+                class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-1"
+              >
+                {% for ticket in user_data.tickets %}
+                <div
+                  class="ticket-badge text-center p-1 rounded text-black font-bold transform hover:scale-105 transition-transform duration-200"
+                >
+                  <div class="text-xs mb-1">
+                    <i class="fas fa-ticket-alt"></i>
+                  </div>
+                  <div class="text-xs font-mono">{{ ticket }}</div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
           </div>
 
-          <div class="text-center mt-6">
-            <p class="warm-brown-light text-lg">
+          <div class="text-center">
+            <div class="bg-green-100 border border-green-300 rounded-lg p-3 mb-3">
+              <p class="text-green-800 font-semibold text-base">
+                <i class="fas fa-check-circle mr-2"></i>
+                All tickets are confirmed and ready for the draw!
+              </p>
+            </div>
+            
+            <p class="warm-brown-light text-base">
               <i class="fas fa-star golden-icon mr-2"></i>
               Good luck with your tickets!
             </p>
@@ -329,6 +349,38 @@
           </button>
         </div>
 
+        <!-- Join Groups for Updates -->
+        <div
+          class="card-glow backdrop-blur-md rounded-2xl p-6 border border-yellow-200/30 text-center"
+        >
+          <h4 class="warm-brown-text font-semibold mb-4 flex items-center justify-center">
+            <i class="fas fa-users mr-2 golden-icon"></i>
+            Join Our Groups for Updates & Winner Announcements
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <a
+              href="{{ whatsapp_link }}"
+              target="_blank"
+              class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-3 btn-hover"
+            >
+              <i class="fab fa-whatsapp text-2xl"></i>
+              <span>Join WhatsApp Group</span>
+            </a>
+            <a
+              href="{{ telegram_link }}"
+              target="_blank"
+              class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-3 btn-hover"
+            >
+              <i class="fab fa-telegram text-2xl"></i>
+              <span>Join Telegram Group</span>
+            </a>
+          </div>
+          <p class="warm-brown-light text-sm">
+            <i class="fas fa-info-circle mr-1"></i>
+            Get notified about draw dates, winner announcements, and special updates!
+          </p>
+        </div>
+
         <!-- Contact Information -->
         <div
           class="card-glow backdrop-blur-md rounded-2xl p-6 border border-yellow-200/30 text-center"
@@ -343,7 +395,7 @@
             </div>
             <div class="flex items-center">
               <i class="fas fa-envelope mr-2 text-blue-400"></i>
-              <span>support@luckydraw.com</span>
+              <span>support@winshaven.com</span>
             </div>
             <div class="flex items-center">
               <i class="fas fa-clock mr-2 golden-icon"></i>
@@ -356,10 +408,11 @@
 
     <!-- Footer -->
     <footer
-      class="bg-white/80 backdrop-blur-md border-t border-yellow-200/30 py-4 relative z-10"
+      class="border-t border-white/15 py-4 backdrop-blur-md relative z-10"
+      style="background: rgba(15, 20, 25, 0.95);"
     >
       <div class="max-w-7xl mx-auto px-4 text-center warm-brown-light text-sm">
-        <p>&copy; 2025 Lucky Draw. All rights reserved.</p>
+        <p>✨ &copy; 2025 WinsHaven. All rights reserved. | Premium Lucky Draw Platform</p>
       </div>
     </footer>
 
@@ -420,11 +473,11 @@
       function shareBooking() {
         const shareText = `🎯 I just booked ${
           document.querySelectorAll(".ticket-badge").length
-        } lucky draw tickets! Join me at Lucky Draw and try your luck too! 🍀`;
+        } WinsHaven tickets! Join me at WinsHaven and try your luck too! 🍀`;
 
         if (navigator.share) {
           navigator.share({
-            title: "Lucky Draw Booking Confirmed!",
+            title: "WinsHaven Booking Confirmed!",
             text: shareText,
             url: window.location.origin,
           });

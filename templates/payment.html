@@ -3,58 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>💳 UPI Payment - Lucky Draw</title>
+    <title>💳 UPI Payment - WinsHaven</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/premium.css') }}" />
     <style>
       .gradient-bg {
-        background: #f5f0e6; /* Darker warm beige background */
+        background: linear-gradient(135deg, #001F3F 0%, #0D1B2A 50%, #1B263B 100%);
       }
+
       .card-glow {
-        box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
-        background: #f8f5ef; /* Slightly darker beige for cards */
+        background: rgba(27, 38, 59, 0.8) !important;
+        border: 1px solid rgba(0, 212, 255, 0.2) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
       }
+
       .btn-hover:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 212, 255, 0.3);
       }
+
       .ticket-badge {
-        background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
-        animation: ticketFloat 3s ease-in-out infinite;
+        background: linear-gradient(135deg, #00D4FF 0%, #00A8E8 100%);
+        color: #FFFFFF;
+        animation: float-animation 3s ease-in-out infinite;
       }
-      @keyframes ticketFloat {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-5px);
-        }
-      }
+
       .qr-container {
-        background: white;
+        background: rgba(27, 38, 59, 0.8);
         padding: 20px;
         border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(0, 212, 255, 0.2);
       }
+
       .payment-steps {
         counter-reset: step-counter;
       }
+
       .payment-step {
         counter-increment: step-counter;
         position: relative;
       }
+
       .payment-step::before {
         content: counter(step-counter);
         position: absolute;
         left: -15px;
         top: 50%;
         transform: translateY(-50%);
-        background: #ffd700;
-        color: white;
+        background: rgba(255,255,255,0.2);
+        color: #FFF;
         width: 30px;
         height: 30px;
         border-radius: 50%;
@@ -62,34 +65,35 @@
         align-items: center;
         justify-content: center;
         font-weight: bold;
-        font-size: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
       }
+
       .warm-brown-text {
-        color: #5c3a21; /* Warm brown for main text */
+        color: #FFFFFF;
       }
+
       .warm-brown-light {
-        color: #8b6f5c; /* Lighter warm brown for secondary text */
+        color: #D0D0D0;
       }
+
       .golden-accent {
-        background: linear-gradient(
-          135deg,
-          #ffd700 0%,
-          #ffa500 100%
-        ); /* Golden yellow to orange */
+        background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+        color: #000;
       }
+
       .golden-icon {
-        color: #ffd700; /* Golden yellow for icons */
+        color: #FFFFFF;
       }
     </style>
   </head>
   <body class="gradient-bg min-h-screen">
     <!-- Navigation -->
-    <nav class="bg-white/80 backdrop-blur-md border-b border-yellow-200/30">
+    <nav class="bg-opacity-95 border-b border-white/15 backdrop-blur-md" style="background: rgba(15, 20, 25, 0.95);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center py-4">
           <div class="flex items-center space-x-3">
             <i class="fas fa-gift golden-icon text-3xl"></i>
-            <h1 class="text-2xl font-bold warm-brown-text">Lucky Draw</h1>
+            <h1 class="text-2xl font-bold warm-brown-text">WinsHaven</h1>
           </div>
           <div class="warm-brown-light text-sm">
             <i class="fas fa-user mr-2"></i>
@@ -177,7 +181,7 @@
                 class="flex justify-between items-center py-3 border-b border-yellow-200/30"
               >
                 <span class="warm-brown-light">Ticket Price:</span>
-                <span class="warm-brown-text font-semibold">₹5</span>
+                <span class="warm-brown-text font-semibold">₹50</span>
               </div>
 
               <div
@@ -225,10 +229,20 @@
             >
               <div class="text-center">
                 <p class="warm-brown-light text-sm mb-2">Pay to UPI ID:</p>
-                <p class="text-2xl font-bold golden-icon font-mono">
-                  {{ user_data.upi_id }}
-                </p>
-                <p class="warm-brown-light text-xs mt-2">HDFC Bank Account</p>
+                <div class="flex items-center justify-center space-x-3">
+                  <p class="text-2xl font-bold golden-icon font-mono" id="upi-id">
+                    {{ user_data.upi_id }}
+                  </p>
+                  <button
+                    onclick="copyUPI()"
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg transition-colors duration-200 flex items-center space-x-2"
+                    title="Copy UPI ID"
+                  >
+                    <i class="fas fa-copy"></i>
+                    <span class="text-sm">Copy</span>
+                  </button>
+                </div>
+                <p class="warm-brown-light text-xs mt-2">Click copy button to copy UPI ID</p>
               </div>
             </div>
 
@@ -339,24 +353,12 @@
                   type="text"
                   id="transaction_ref"
                   name="transaction_ref"
-                  required
-                  maxlength="12"
-                  pattern="[0-9]{12}"
-                  placeholder="Enter 12-digit UPI transaction ID"
+                  placeholder="Enter your reference number"
                   class="w-full px-4 py-3 bg-white border border-yellow-200 rounded-lg warm-brown-text placeholder-gray-500 transition-all duration-300 focus:outline-none focus:border-yellow-400 focus:bg-white/30"
-                  oninput="validateTransactionRef(this)"
                 />
-                <div
-                  id="transaction-ref-error"
-                  class="text-red-400 text-xs mt-2 hidden"
-                >
-                  <i class="fas fa-exclamation-triangle mr-1"></i>
-                  Transaction ID must be exactly 12 digits
-                </div>
                 <p class="warm-brown-light text-xs mt-2">
                   <i class="fas fa-info-circle mr-1"></i>
-                  Found in your UPI app after successful payment (12 digits
-                  only)
+                  Found in your UPI app after successful payment
                 </p>
               </div>
 
@@ -417,10 +419,11 @@
 
     <!-- Footer -->
     <footer
-      class="bg-white/80 backdrop-blur-md border-t border-yellow-200/30 py-4"
+      class="border-t border-white/15 py-4 backdrop-blur-md"
+      style="background: rgba(15, 20, 25, 0.95);"
     >
       <div class="max-w-7xl mx-auto px-4 text-center warm-brown-light text-sm">
-        <p>&copy; 2025 Lucky Draw. All rights reserved.</p>
+        <p>✨ &copy; 2025 WinsHaven. All rights reserved. | Premium Lucky Draw Platform</p>
       </div>
     </footer>
 
@@ -523,59 +526,19 @@
         }, 10000);
       }
 
-      // Form validation
+      // Show loading on form submit
       document.querySelector("form").addEventListener("submit", function (e) {
-        const transactionRef = document
-          .getElementById("transaction_ref")
-          .value.trim();
-
-        if (!transactionRef) {
-          e.preventDefault();
-          alert("Please enter the transaction reference number");
-          return;
-        }
-
-        // Validate 12 digits
-        if (!/^\d{12}$/.test(transactionRef)) {
-          e.preventDefault();
-          alert("Transaction ID must be exactly 12 digits");
-          return;
-        }
-
-        // Show loading state
         const button = this.querySelector("button");
         button.innerHTML =
-          '<i class="fas fa-spinner fa-spin mr-2"></i><span>Verifying Payment...</span>';
-        button.disabled = true;
+          '<i class="fas fa-spinner fa-spin mr-2"></i><span>Completing Booking...</span>';
       });
-
-      // Real-time validation for transaction reference
-      function validateTransactionRef(input) {
-        const value = input.value.trim();
-        const errorDiv = document.getElementById("transaction-ref-error");
-        const submitBtn = document.querySelector('button[type="submit"]');
-
-        if (value.length === 0) {
-          errorDiv.classList.add("hidden");
-          submitBtn.disabled = false;
-          return;
-        }
-
-        if (!/^\d{12}$/.test(value)) {
-          errorDiv.classList.remove("hidden");
-          submitBtn.disabled = true;
-        } else {
-          errorDiv.classList.add("hidden");
-          submitBtn.disabled = false;
-        }
-      }
 
       // Generate actual UPI QR Code (you can replace this with a real QR code generator)
       function generateUPIQR() {
         const upiId = "{{ user_data.upi_id }}";
         const amount = "{{ user_data.total_amount }}";
         const name = "{{ user_data.name }}";
-        const note = "Lucky Draw Tickets";
+        const note = "WinsHaven Tickets";
 
         // UPI URL format
         const upiUrl = `upi://pay?pa=${upiId}&pn=${name}&tn=${note}&am=${amount}&cu=INR`;
@@ -585,6 +548,45 @@
 
         // You can integrate with a QR code service like:
         // https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=${encodeURIComponent(upiUrl)}
+      }
+
+      // Copy UPI ID function
+      function copyUPI() {
+        const upiId = document.getElementById('upi-id').textContent.trim();
+        
+        // Create a temporary textarea element
+        const tempTextarea = document.createElement('textarea');
+        tempTextarea.value = upiId;
+        document.body.appendChild(tempTextarea);
+        
+        // Select and copy the text
+        tempTextarea.select();
+        tempTextarea.setSelectionRange(0, 99999); // For mobile devices
+        
+        try {
+          document.execCommand('copy');
+          
+          // Show success message
+          const button = event.target.closest('button');
+          const originalContent = button.innerHTML;
+          button.innerHTML = '<i class="fas fa-check"></i><span class="text-sm">Copied!</span>';
+          button.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+          button.classList.add('bg-green-500', 'hover:bg-green-600');
+          
+          // Reset button after 2 seconds
+          setTimeout(() => {
+            button.innerHTML = originalContent;
+            button.classList.remove('bg-green-500', 'hover:bg-green-600');
+            button.classList.add('bg-blue-500', 'hover:bg-blue-600');
+          }, 2000);
+          
+        } catch (err) {
+          console.error('Failed to copy UPI ID: ', err);
+          alert('Failed to copy UPI ID. Please copy manually: ' + upiId);
+        }
+        
+        // Remove the temporary element
+        document.body.removeChild(tempTextarea);
       }
 
       // Initialize

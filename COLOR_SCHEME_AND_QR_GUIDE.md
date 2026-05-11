@@ -220,3 +220,4 @@ python generate_website_qr.py
 - 🚀 **Modern design**
 
 **Next step**: Run `setup_and_qr.bat` (Windows) or `./setup_and_qr.sh` (Linux/Mac) to generate your QR code! 🎯💰
+

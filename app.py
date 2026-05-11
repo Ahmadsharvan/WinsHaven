@@ -388,25 +388,45 @@ def process_ticket_selection():
         flash('Please select at least one ticket', 'error')
         return redirect(url_for('select_tickets'))
     
-    # Check if tickets are still available
+    # Check if tickets are still available and not locked
     tickets = load_tickets()
     unavailable_tickets = []
-    
+    locked_tickets = []
+
     for ticket in selected_tickets:
-        if ticket not in tickets or not tickets[ticket].get('available', True):
+        if ticket not in tickets:
             unavailable_tickets.append(ticket)
-    
+        else:
+            ticket_status = tickets[ticket].get('status', 'available')
+            if ticket_status in ['booked', 'verification_pending', 'verified']:
+                unavailable_tickets.append(ticket)
+            elif ticket_status == 'locked':
+                locked_tickets.append(ticket)
+
     if unavailable_tickets:
         flash(f'Tickets {", ".join(unavailable_tickets)} are no longer available', 'error')
         return redirect(url_for('select_tickets'))
-    
+
+    if locked_tickets:
+        flash(f'Tickets {", ".join(locked_tickets)} are currently locked by another user', 'error')
+        return redirect(url_for('select_tickets'))
+
+    # Generate session ID for ticket locking
+    session_id = os.urandom(16).hex()
+    session['payment_session_id'] = session_id
+
+    # Lock tickets for payment process (STRICT LOCKING)
+    if not lock_tickets_for_payment(selected_tickets, session_id):
+        flash('One or more tickets are no longer available. Please try again.', 'error')
+        return redirect(url_for('select_tickets'))
+
     # Calculate total amount
     total_amount = len(selected_tickets) * TICKET_PRICE
-    
+
     # Store in session
     session['selected_tickets'] = selected_tickets
     session['total_amount'] = total_amount
-    
+
     return redirect(url_for('payment'))
 
 @app.route('/payment')
@@ -475,8 +495,18 @@ def complete_booking(transaction_ref, verified=False):
         df = pd.concat([df, pd.DataFrame([booking_data])], ignore_index=True)
         df.to_excel(EXCEL_FILE, index=False)
         
-        # Update ticket availability
-        update_ticket_availability(session['selected_tickets'])
+        # Update ticket availability with metadata
+        user_data_dict = {
+            'name': session['user_name'],
+            'mobile': session['user_mobile']
+        }
+        update_ticket_availability(session['selected_tickets'], user_data_dict, transaction_ref)
+
+        # Unlock tickets from payment lock (they're now booked)
+        session_id = session.get('payment_session_id')
+        if session_id:
+            # Tickets are already marked as booked, so we don't need to unlock them
+            pass
         
         # Prepare user data for success page
         user_data = {

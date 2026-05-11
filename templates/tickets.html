@@ -3,108 +3,96 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🎫 Select Tickets - Lucky Draw</title>
+    <title>🎫 Select Tickets - WinsHaven</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/premium.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}" />
     <style>
       .gradient-bg {
-        background: #f5f0e6; /* Darker warm beige background */
+        background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 50%, #0d1117 100%);
       }
+
       .card-glow {
-        box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
-        background: #f8f5ef; /* Slightly darker beige for cards */
+        background: rgba(20, 25, 40, 0.9) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
       }
+
       .ticket-card {
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
         position: relative;
+        background: rgba(20, 25, 40, 0.7) !important;
+        border: 2px solid rgba(255, 255, 255, 0.15) !important;
       }
+
       .ticket-card:hover:not(.booked) {
         transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3) !important;
       }
+
       .ticket-card.selected {
-        border-color: #ffd700;
-        background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
-        transform: scale(1.05);
+        border-color: rgba(255, 255, 255, 0.5) !important;
+        background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%) !important;
+        color: #000;
+        transform: scale(1.08) translateY(-6px);
+        box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+        animation: scaleUpReveal 0.4s ease-out;
       }
+
       .ticket-card.booked {
         opacity: 0.6;
         cursor: not-allowed;
+        background: rgba(100, 100, 100, 0.2) !important;
+        border-color: #888888 !important;
       }
+
       .ticket-image {
-        background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.6) 100%);
         border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
+        color: #000;
         font-weight: bold;
       }
+
+      .ticket-card.booked .ticket-image {
+        background: linear-gradient(135deg, rgba(150,150,150,0.5) 0%, rgba(120,120,120,0.5) 100%);
+      }
+
       .btn-hover:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(255, 255, 255, 0.15);
       }
+
       .search-input:focus {
-        box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1) !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
       }
+
       .warm-brown-text {
-        color: #5c3a21; /* Warm brown for main text */
+        color: #FFFFFF;
       }
+
       .warm-brown-light {
-        color: #8b6f5c; /* Lighter warm brown for secondary text */
+        color: #D0D0D0;
       }
+
       .golden-accent {
-        background: linear-gradient(
-          135deg,
-          #ffd700 0%,
-          #ffa500 100%
-        ); /* Golden yellow to orange */
+        background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+        color: #000;
       }
+
       .golden-icon {
-        color: #ffd700; /* Golden yellow for icons */
-      }
-
-      /* Ticket Animation Styles */
-      .ticket-animation-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1000;
-      }
-
-      .ticket-animation {
-        position: absolute;
-        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        transform-origin: center;
-      }
-
-      .ticket-tear-effect {
-        position: relative;
-        overflow: hidden;
-      }
-
-      .ticket-tear-effect::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.6s ease;
-      }
-
-      .ticket-tear-effect.tearing::before {
-        transform: scaleX(1);
+        color: #FFFFFF;
       }
 
       .selected-tickets-sidebar {
@@ -112,39 +100,38 @@
         right: 20px;
         top: 50%;
         transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(15, 20, 25, 0.95);
         backdrop-filter: blur(10px);
         border-radius: 15px;
         padding: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        border: 2px solid #ffd700;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
         max-height: 80vh;
         overflow-y: auto;
         z-index: 100;
+        animation: slideInFromRight 0.4s ease-out;
       }
 
       .selected-ticket-item {
-        background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
-        color: white;
+        background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+        color: #000;
         padding: 10px;
         margin: 5px 0;
         border-radius: 8px;
         text-align: center;
         font-weight: bold;
-        animation: ticketBounce 0.5s ease;
+        animation: scaleUpReveal 0.4s ease-out;
       }
 
-      @keyframes ticketBounce {
-        0% {
-          transform: scale(0.8);
+      @keyframes slideInFromRight {
+        from {
           opacity: 0;
+          transform: translateX(50px);
         }
-        50% {
-          transform: scale(1.1);
-        }
-        100% {
-          transform: scale(1);
+        to {
           opacity: 1;
+          transform: translateX(0);
         }
       }
 
@@ -154,12 +141,13 @@
         left: 50%;
         transform: translate(-50%, -50%) scale(0);
         z-index: 999;
-        background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
-        color: white;
+        background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+        color: #000;
         padding: 30px;
         border-radius: 15px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 20px 60px rgba(255, 255, 255, 0.2);
         animation: zoomInOut 1.2s ease-in-out;
+        font-weight: bold;
       }
 
       @keyframes zoomInOut {
@@ -176,16 +164,38 @@
           opacity: 0;
         }
       }
+
+      .input-premium {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 2px solid rgba(255, 255, 255, 0.15) !important;
+        color: #FFFFFF !important;
+      }
+
+      .input-premium:focus {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1) !important;
+      }
+
+      .ticket-animation-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1000;
+      }
     </style>
   </head>
   <body class="gradient-bg min-h-screen">
     <!-- Navigation -->
-    <nav class="bg-white/80 backdrop-blur-md border-b border-yellow-200/30">
+    <nav class="navbar-premium bg-opacity-95 backdrop-blur-md border-b border-white/15" style="background: rgba(15, 20, 25, 0.95);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center py-4">
           <div class="flex items-center space-x-3">
             <i class="fas fa-gift golden-icon text-3xl"></i>
-            <h1 class="text-2xl font-bold warm-brown-text">Lucky Draw</h1>
+            <h1 class="text-2xl font-bold warm-brown-text">WinsHaven</h1>
           </div>
           <div class="warm-brown-light text-sm">
             <i class="fas fa-user mr-2"></i>
@@ -201,10 +211,10 @@
         <!-- Header -->
         <div class="text-center mb-8">
           <h2 class="text-4xl font-bold warm-brown-text mb-4">
-            Select Your Lucky Tickets
+            ✨ Select Your Lucky Tickets
           </h2>
           <p class="warm-brown-light text-lg">
-            Choose from 500 available tickets. Booked tickets are shown in red.
+            Choose from 1000 available tickets. <span class="text-red-400">Red tickets</span> are already booked.
           </p>
         </div>
 
@@ -212,7 +222,7 @@
         {% with messages = get_flashed_messages(with_categories=true) %} {% if
         messages %} {% for category, message in messages %}
         <div
-          class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6"
+          class="bg-red-900/20 border border-red-500 text-red-300 px-4 py-3 rounded relative mb-6"
           role="alert"
         >
           <span class="block sm:inline">{{ message }}</span>
@@ -221,7 +231,7 @@
 
         <!-- Controls -->
         <div
-          class="card-glow backdrop-blur-md rounded-2xl p-6 mb-8 border border-yellow-200/30"
+          class="card-glow backdrop-blur-md rounded-2xl p-6 mb-8"
         >
           <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
             <div>
@@ -235,7 +245,7 @@
                 type="text"
                 id="search"
                 placeholder="Enter ticket number..."
-                class="w-full px-4 py-2 bg-white border border-yellow-200 rounded-lg warm-brown-text placeholder-gray-500 search-input transition-all duration-300 focus:outline-none focus:border-yellow-400"
+                class="w-full px-4 py-2 input-premium search-input transition-all duration-300 focus:outline-none placeholder-gray-500"
               />
             </div>
 
@@ -245,7 +255,7 @@
               </label>
               <select
                 id="filter"
-                class="w-full px-4 py-2 bg-white border border-yellow-200 rounded-lg warm-brown-text focus:outline-none focus:border-yellow-400"
+                class="w-full px-4 py-2 input-premium focus:outline-none"
               >
                 <option value="all">All Tickets</option>
                 <option value="available">Available Only</option>
@@ -266,7 +276,7 @@
               <button
                 id="submit-btn"
                 disabled
-                class="w-full golden-accent text-white font-bold py-2 px-6 rounded-lg btn-hover transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                class="w-full btn-premium golden-accent text-white font-bold py-2 px-6 rounded-lg btn-hover transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
               >
                 <i class="fas fa-arrow-right mr-2"></i>
                 <span>Proceed to Payment</span>
@@ -277,20 +287,22 @@
 
         <!-- Ticket Grid -->
         <div
-          class="card-glow backdrop-blur-md rounded-2xl p-6 border border-yellow-200/30"
+          class="card-glow backdrop-blur-md rounded-2xl p-6"
         >
-          <div
-            class="grid grid-cols-5 sm:grid-cols-10 md:grid-cols-15 lg:grid-cols-20 xl:grid-cols-25 gap-2"
-            id="ticket-grid"
-          >
-            {% for ticket_num in range(1, 501) %} {% set ticket_key =
+          <!-- Scrollable Ticket Container -->
+          <div class="max-h-96 overflow-y-auto border border-cyan-500/30 rounded-lg p-4 bg-black/20">
+            <div
+              class="grid grid-cols-5 sm:grid-cols-10 md:grid-cols-15 lg:grid-cols-20 xl:grid-cols-25 gap-2"
+              id="ticket-grid"
+            >
+              {% for ticket_num in range(1, 1001) %} {% set ticket_key =
             "%04d"|format(ticket_num) %} {% set ticket_data =
             tickets.get(ticket_key, {}) %} {% set is_available =
             ticket_data.get('available', True) %} {% set is_booked = not
             is_available %}
 
             <div
-              class="ticket-card {% if is_booked %}booked{% endif %} bg-white/80 rounded-lg p-2 border-2 border-yellow-200 text-center"
+              class="ticket-card {% if is_booked %}booked{% endif %} rounded-lg p-2 text-center"
               data-ticket="{{ ticket_key }}"
               data-available="{{ 'true' if is_available else 'false' }}"
             >
@@ -306,12 +318,12 @@
                 <div class="ticket-image h-12 w-full mb-2 text-xs">
                   <i class="fas fa-ticket-alt"></i>
                 </div>
-                <div class="warm-brown-text font-mono text-xs">
+                <div class="ticket-number font-mono text-xs">
                   {{ ticket_key }}
                 </div>
               </label>
               {% else %}
-              <div class="ticket-image h-12 w-full mb-2 text-xs bg-red-500">
+              <div class="ticket-image h-12 w-full mb-2 text-xs">
                 <i class="fas fa-times"></i>
               </div>
               <div class="text-red-400 font-mono text-xs">{{ ticket_key }}</div>
@@ -319,6 +331,7 @@
               {% endif %}
             </div>
             {% endfor %}
+            </div>
           </div>
         </div>
 
@@ -331,10 +344,10 @@
         >
           <div
             id="selected-tickets-display"
-            class="card-glow backdrop-blur-md rounded-2xl p-6 border border-yellow-200/30 mb-6 hidden"
+            class="card-glow backdrop-blur-md rounded-2xl p-6 mb-6 hidden"
           >
             <h3 class="text-xl font-bold warm-brown-text mb-4">
-              Selected Tickets:
+              ✓ Selected Tickets:
             </h3>
             <div id="selected-tickets-list" class="flex flex-wrap gap-2"></div>
             <div class="mt-4 text-center">
@@ -356,7 +369,7 @@
               type="submit"
               id="final-submit-btn"
               disabled
-              class="golden-accent text-white font-bold py-4 px-8 rounded-xl btn-hover transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-lg flex items-center justify-center space-x-3 mx-auto"
+              class="btn-premium golden-accent text-white font-bold py-4 px-8 rounded-xl btn-hover transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-lg flex items-center justify-center space-x-3 mx-auto"
             >
               <i class="fas fa-credit-card mr-2"></i>
               <span>Proceed to Payment</span>
@@ -369,7 +382,7 @@
     <!-- Selected Tickets Sidebar -->
     <div id="selected-tickets-sidebar" class="selected-tickets-sidebar hidden">
       <h3 class="warm-brown-text font-bold mb-3 text-center">
-        Selected Tickets
+        📋 Selected Tickets
       </h3>
       <div id="sidebar-tickets-list"></div>
     </div>
@@ -382,10 +395,11 @@
 
     <!-- Footer -->
     <footer
-      class="bg-white/80 backdrop-blur-md border-t border-yellow-200/30 py-4 mt-12"
+      class="border-t border-white/15 py-4 mt-12 backdrop-blur-md"
+      style="background: rgba(15, 20, 25, 0.95);"
     >
       <div class="max-w-7xl mx-auto px-4 text-center warm-brown-light text-sm">
-        <p>&copy; 2025 Lucky Draw. All rights reserved.</p>
+        <p>✨ &copy; 2025 WinsHaven. All rights reserved. | Premium Lucky Draw Platform</p>
       </div>
     </footer>
 
@@ -525,7 +539,7 @@
 
       // Update total amount
       function updateTotalAmount() {
-        const amount = selectedTickets.size * {{ ticket_price }};
+        const amount = selectedTickets.size * parseInt('{{ ticket_price }}');
         totalAmount.textContent = `₹${amount}`;
       }
 

@@ -1,0 +1,599 @@
+/* Premium UI Styles - Navy & Cyan Color Scheme */
+
+:root {
+  /* Navy & Cyan Color Palette */
+  --primary-navy: #001F3F;
+  --secondary-navy: #0D1B2A;
+  --card-navy: #1B263B;
+  --text-white: #FFFFFF;
+  --text-light-gray: #E0E0E0;
+  --text-medium-gray: #B0B0B0;
+  --accent-cyan: #00D4FF;
+  --accent-cyan-hover: #00A8E8;
+  --border-gray: #4A5568;
+  --success-green: #10B981;
+  --error-red: #EF4444;
+  --warning-orange: #F59E0B;
+
+  /* Gradients */
+  --gradient-navy: linear-gradient(135deg, #001F3F 0%, #0D1B2A 100%);
+  --gradient-button: linear-gradient(135deg, #00D4FF 0%, #00A8E8 100%);
+  --gradient-dark: linear-gradient(135deg, #0D1B2A 0%, #1B263B 100%);
+}
+
+/* ==================== SMOOTH ANIMATIONS ==================== */
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+  }
+}
+
+@keyframes smoothRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmerOverlay {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes smoothBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes cardStackEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatingLabel {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes inputGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 2px rgba(0, 212, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.5);
+  }
+}
+
+@keyframes ticketZoom {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes cyberGlow {
+  0% {
+    text-shadow: 0 0 5px var(--accent-cyan), 0 0 10px rgba(0, 212, 255, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 10px var(--accent-cyan), 0 0 20px rgba(0, 212, 255, 0.8);
+  }
+  100% {
+    text-shadow: 0 0 5px var(--accent-cyan), 0 0 10px rgba(0, 212, 255, 0.5);
+  }
+}
+
+/* ==================== GLOBAL STYLES ==================== */
+
+body {
+  background: var(--gradient-navy);
+  color: var(--text-white);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ==================== NAVIGATION ==================== */
+
+.navbar-premium {
+  background: rgba(0, 31, 63, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-premium .navbar-brand {
+  color: var(--text-white) !important;
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: slideInFromLeft 0.6s ease-out;
+}
+
+.navbar-premium .nav-icon {
+  color: var(--accent-cyan);
+  animation: smoothBounce 3s ease-in-out infinite;
+}
+
+/* ==================== PREMIUM CARDS ==================== */
+
+.card-premium {
+  background: rgba(27, 38, 59, 0.8) !important;
+  border: 1px solid rgba(0, 212, 255, 0.2) !important;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: cardStackEnter 0.6s ease-out;
+}
+
+.card-premium:hover {
+  border-color: rgba(0, 212, 255, 0.4);
+  box-shadow: 0 12px 48px rgba(0, 212, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+/* ==================== PREMIUM BUTTONS ==================== */
+
+.btn-premium {
+  background: var(--gradient-button);
+  color: var(--text-white);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-premium:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+}
+
+.btn-premium:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-premium:active {
+  transform: translateY(-1px);
+}
+
+.btn-premium:disabled {
+  background: #4A5568;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-premium-secondary {
+  background: transparent;
+  border: 2px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+  padding: 10px 24px;
+}
+
+.btn-premium-secondary:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--accent-cyan-hover);
+  color: var(--accent-cyan-hover);
+}
+
+/* ==================== FORM ELEMENTS ==================== */
+
+.input-premium {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 2px solid var(--border-gray) !important;
+  color: var(--text-white) !important;
+  border-radius: 8px;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+}
+
+.input-premium::placeholder {
+  color: var(--text-medium-gray);
+}
+
+.input-premium:focus {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: var(--accent-cyan) !important;
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+  outline: none;
+  animation: inputGlow 0.6s ease-in-out;
+}
+
+.form-label-premium {
+  color: var(--text-light-gray);
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+  animation: floatingLabel 0.3s ease-out;
+}
+
+.input-group-premium {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group-premium .form-label-premium {
+  position: absolute;
+  left: 16px;
+  top: -10px;
+  background: var(--gradient-navy);
+  padding: 0 8px;
+  font-size: 0.85rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+}
+
+.input-group-premium .input-premium:focus + .form-label-premium,
+.input-group-premium .input-premium:not(:placeholder-shown) + .form-label-premium {
+  opacity: 1;
+  transform: translateY(0);
+  color: var(--accent-cyan);
+}
+
+/* ==================== PREMIUM BADGE ==================== */
+
+.badge-premium {
+  background: rgba(0, 212, 255, 0.2);
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+  animation: fadeInScale 0.4s ease-out;
+}
+
+/* ==================== TICKET CARDS ==================== */
+
+.ticket-premium {
+  background: rgba(27, 38, 59, 0.8);
+  border: 2px solid var(--border-gray);
+  border-radius: 10px;
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.ticket-premium:hover:not(.booked) {
+  border-color: var(--accent-cyan);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.2);
+}
+
+.ticket-premium.selected {
+  background: var(--gradient-button);
+  border-color: var(--accent-cyan);
+  transform: scale(1.08) translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 212, 255, 0.4);
+  animation: ticketZoom 0.4s ease-out;
+}
+
+.ticket-premium.booked {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: var(--error-red);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ticket-premium.booked::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(239, 68, 68, 0.3) 10px,
+    rgba(239, 68, 68, 0.3) 20px
+  );
+  border-radius: 8px;
+}
+
+.ticket-number {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: var(--accent-cyan);
+  font-size: 0.9rem;
+}
+
+/* ==================== SIDEBAR PREMIUM ==================== */
+
+.sidebar-premium {
+  background: rgba(13, 27, 42, 0.95);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: slideInFromRight 0.4s ease-out;
+  padding: 20px;
+}
+
+.sidebar-title-premium {
+  color: var(--accent-cyan);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.sidebar-item-premium {
+  background: var(--gradient-button);
+  color: var(--text-white);
+  padding: 10px 14px;
+  margin: 8px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  animation: fadeInScale 0.3s ease-out;
+  transition: all 0.3s ease;
+}
+
+.sidebar-item-premium:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.4);
+}
+
+/* ==================== LOADING SPINNER ==================== */
+
+.spinner-premium {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 212, 255, 0.2);
+  border-top: 3px solid var(--accent-cyan);
+  border-radius: 50%;
+  animation: smoothRotate 0.8s linear infinite;
+}
+
+/* ==================== STATUS INDICATORS ==================== */
+
+.status-success {
+  color: var(--success-green);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.status-error {
+  color: var(--error-red);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.status-warning {
+  color: var(--warning-orange);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+/* ==================== PREMIUM TEXT EFFECTS ==================== */
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-cyan-hover) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-glow-cyan {
+  animation: cyberGlow 3s ease-in-out infinite;
+}
+
+.section-title-premium {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  animation: slideInFromLeft 0.6s ease-out;
+  letter-spacing: 1px;
+}
+
+/* ==================== ANIMATION UTILITIES ==================== */
+
+.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-left {
+  animation: slideInFromLeft 0.5s ease-out;
+}
+
+.animate-slide-right {
+  animation: slideInFromRight 0.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideInFromBottom 0.5s ease-out;
+}
+
+/* Staggered animations */
+.animate-stagger-1 { animation-delay: 0.1s; }
+.animate-stagger-2 { animation-delay: 0.2s; }
+.animate-stagger-3 { animation-delay: 0.3s; }
+.animate-stagger-4 { animation-delay: 0.4s; }
+.animate-stagger-5 { animation-delay: 0.5s; }
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+@media (max-width: 768px) {
+  .section-title-premium {
+    font-size: 2rem;
+  }
+
+  .btn-premium {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title-premium {
+    font-size: 1.5rem;
+  }
+
+  .sidebar-premium {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(100% - 20px);
+    max-width: 300px;
+  }
+}
+
+/* ==================== ACCESSIBILITY ==================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus states for keyboard navigation */
+.btn-premium:focus-visible,
+.input-premium:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+/* ==================== SCROLLBAR STYLING ==================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 212, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.5);
+}

@@ -86,10 +86,9 @@
             </div>
             <div>
               <h3 class="text-2xl font-bold warm-brown-text">
-                {{ bookings|selectattr('Payment_Status', 'equalto',
-                'Pending')|list|length if bookings else 0 }}
+                {{ bookings|selectattr('Verified', 'equalto', 'Pending')|list|length if bookings else 0 }}
               </h3>
-              <p class="warm-brown-light">Pending Payments</p>
+              <p class="warm-brown-light">Pending Verification</p>
             </div>
           </div>
         </div>
@@ -132,6 +131,16 @@
                     class="px-6 py-3 text-left text-xs font-medium warm-brown-text uppercase tracking-wider"
                   >
                     Booking Date
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium warm-brown-text uppercase tracking-wider"
+                  >
+                    Verified
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium warm-brown-text uppercase tracking-wider"
+                  >
+                    Actions
                   </th>
                 </tr>
               </thead>
@@ -195,6 +204,37 @@
                       {{ booking.Booking_Date }}
                     </div>
                   </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-center">
+                    {% if booking.Verified == 'Yes' %}
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                        <i class="fas fa-check-circle mr-1"></i>Verified
+                      </span>
+                    {% elif booking.Verified == 'No' %}
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                        <i class="fas fa-times-circle mr-1"></i>Rejected
+                      </span>
+                    {% else %}
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                        <i class="fas fa-clock mr-1"></i>Pending
+                      </span>
+                    {% endif %}
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-center">
+                    {% if booking.Verified != 'Yes' %}
+                      <div class="flex space-x-2">
+                        <a href="{{ url_for('admin_verify_payment', booking_id=loop.index0, status='verify') }}" 
+                           class="bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-1 rounded transition-colors duration-200">
+                          <i class="fas fa-check mr-1"></i>Verify
+                        </a>
+                        <a href="{{ url_for('admin_verify_payment', booking_id=loop.index0, status='reject') }}" 
+                           class="bg-red-500 hover:bg-red-600 text-white text-xs px-3 py-1 rounded transition-colors duration-200">
+                          <i class="fas fa-times mr-1"></i>Reject
+                        </a>
+                      </div>
+                    {% else %}
+                      <span class="text-green-600 text-sm">✓ Verified</span>
+                    {% endif %}
+                  </td>
                 </tr>
                 {% endfor %}
               </tbody>
@@ -243,7 +283,7 @@
       class="bg-white/80 backdrop-blur-md border-t border-yellow-200/30 py-4"
     >
       <div class="max-w-7xl mx-auto px-4 text-center warm-brown-light text-sm">
-        <p>&copy; 2025 Lucky Draw Admin Panel. All rights reserved.</p>
+        <p>&copy; 2025 WinsHaven Admin Panel. All rights reserved.</p>
       </div>
     </footer>
   </body>

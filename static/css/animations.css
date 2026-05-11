@@ -1,0 +1,306 @@
+/* ==================== STUNNING ANIMATIONS FOR NAVY + WHITE THEME ==================== */
+
+/* Gradient animations */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes glowingText {
+
+  0%,
+  100% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+      0 0 20px rgba(255, 255, 255, 0.2);
+  }
+
+  50% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+      0 0 40px rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes liquidSwipe {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  }
+
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes orbitalRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2),
+      inset 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.4),
+      inset 0 0 40px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1200px 0;
+  }
+
+  100% {
+    background-position: 1200px 0;
+  }
+}
+
+@keyframes bounce3d {
+
+  0%,
+  100% {
+    transform: translateY(0) rotateZ(0deg);
+  }
+
+  25% {
+    transform: translateY(-20px) rotateZ(5deg);
+  }
+
+  50% {
+    transform: translateY(0) rotateZ(0deg);
+  }
+
+  75% {
+    transform: translateY(-10px) rotateZ(-5deg);
+  }
+}
+
+@keyframes slideInRotate {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px) rotate(-10deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+@keyframes scaleUpReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes borderGlow {
+
+  0%,
+  100% {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+
+  50% {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes infiniteFloat {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes staggeredSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes neonGlow {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+  }
+
+  100% {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInStaggered {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes widthExpand {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes heightExpand {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+
+  to {
+    height: auto;
+    opacity: 1;
+  }
+}
+
+/* Utility animation classes */
+.glow-text {
+  animation: glowingText 2s ease-in-out infinite;
+}
+
+.float-animation {
+  animation: infiniteFloat 3s ease-in-out infinite;
+}
+
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.shimmer-effect {
+  animation: shimmer 3s ease-in-out infinite;
+  background-size: 1200px 100%;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%);
+}
+
+.bounce-3d {
+  animation: bounce3d 2s ease-in-out infinite;
+}
+
+.border-glow {
+  animation: borderGlow 2s ease-in-out infinite;
+}
+
+.neon-effect {
+  animation: neonGlow 2s ease-in-out infinite;
+}
+
+.reveal-animation {
+  animation: reveal 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.slide-down {
+  animation: slideDown 0.6s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+.scale-up {
+  animation: scaleUpReveal 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.rotate-scale-in {
+  animation: slideInRotate 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}

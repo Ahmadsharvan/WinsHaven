@@ -5,7 +5,7 @@ A modern, mobile-responsive web application for managing lucky draw ticket booki
 ## ✨ Features
 
 - 🎫 **Ticket Selection**: Interactive ticket grid with animations
-- 💳 **Real-time Payments**: Razorpay integration with instant verification
+- 💳 **Manual Payments**: UPI integration with transaction verification
 - 📱 **Mobile-Responsive**: Works perfectly on all devices
 - 🔧 **Admin Dashboard**: Complete management interface
 - 📊 **Data Management**: Excel-based data storage and export
@@ -43,7 +43,7 @@ python app_realtime.py
 
 - **Backend**: Flask, Flask-SocketIO
 - **Frontend**: HTML5, CSS3, JavaScript, TailwindCSS
-- **Payment**: Razorpay Integration
+- **Payment**: UPI Integration with Manual Verification
 - **Database**: Excel (pandas)
 - **Real-time**: WebSocket (Socket.IO)
 
@@ -69,11 +69,11 @@ FLASK_ENV=production
 SECRET_KEY=your-secret-key-here
 ```
 
-### Razorpay Setup
+### UPI Setup
 
-1. Get API keys from Razorpay Dashboard
-2. Update `RAZORPAY_KEY_ID` and `RAZORPAY_KEY_SECRET` in `app_realtime.py`
-3. Configure webhook URL: `https://your-domain.com/razorpay_webhook`
+1. Configure your UPI ID in `app_realtime.py`
+2. Set up QR code for easy payment scanning
+3. Train admin users on payment verification process
 
 ## 🚀 Deployment
 

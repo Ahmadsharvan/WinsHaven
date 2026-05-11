@@ -3,53 +3,213 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🎯 Lucky Draw - Welcome</title>
+    <title>🎯 WinsHaven - Welcome</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/premium.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}" />
     <style>
+      /* ==================== PREMIUM STUNNING DESIGN ==================== */
       .gradient-bg {
-        background: #f5f0e6; /* Darker warm beige background */
+        background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 50%, #0d1117 100%);
+        min-height: 100vh;
+        position: relative;
       }
+
+      .gradient-bg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.03) 0%, transparent 50%);
+        pointer-events: none;
+      }
+
       .card-glow {
-        box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
-        background: #f8f5ef; /* Slightly darker beige for cards */
+        background: rgba(20, 25, 40, 0.9) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        animation: slideUp 0.6s ease-out;
       }
+
+      .card-glow:hover {
+        border-color: rgba(255, 255, 255, 0.25) !important;
+        box-shadow: 0 12px 40px rgba(255, 255, 255, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      }
+
       .input-focus:focus {
-        box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
-      }
-      .btn-hover:hover {
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1) !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
         transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        transition: all 0.3s ease;
       }
+
+      .btn-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(255, 255, 255, 0.15);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
       .warm-brown-text {
-        color: #5c3a21; /* Warm brown for main text */
+        color: #FFFFFF;
       }
+
       .warm-brown-light {
-        color: #8b6f5c; /* Lighter warm brown for secondary text */
+        color: #D0D0D0;
       }
+
       .golden-accent {
-        background: linear-gradient(
-          135deg,
-          #ffd700 0%,
-          #ffa500 100%
-        ); /* Golden yellow to orange */
+        background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+        color: #000;
+        position: relative;
+        overflow: hidden;
       }
+
+      .golden-accent::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        animation: shimmer 3s infinite;
+      }
+
       .golden-icon {
-        color: #ffd700; /* Golden yellow for icons */
+        color: #FFFFFF;
+        animation: float-animation 3s ease-in-out infinite;
+      }
+
+      .fade-in {
+        animation: slideUp 0.6s ease-out;
+      }
+
+      .form-slide {
+        animation: slideUp 0.6s ease-out;
+      }
+
+      .floating {
+        animation: float-animation 4s ease-in-out infinite;
+      }
+
+      .sparkle {
+        position: relative;
+        overflow: hidden;
+        animation: pulse-glow 2s ease-in-out infinite;
+      }
+
+      .sparkle::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        animation: shimmer 3s linear infinite;
+        opacity: 0;
+      }
+
+      .sparkle:hover::before {
+        opacity: 1;
+      }
+
+      .input-group {
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+
+      .input-group input {
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 2px solid rgba(255, 255, 255, 0.15) !important;
+        color: #FFFFFF !important;
+      }
+
+      .input-group input:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1) !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+      }
+
+      .input-group label {
+        transition: all 0.3s ease;
+        color: #D0D0D0;
+      }
+
+      .input-group input:focus + label {
+        transform: translateY(-5px);
+        color: #FFFFFF;
+      }
+
+      .button-escape {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .button-escape:not(.button-enabled) {
+        opacity: 0.6;
+      }
+
+      .button-escape.button-enabled:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(255, 255, 255, 0.15);
+      }
+
+      .button-disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background: rgba(255, 255, 255, 0.1) !important;
+      }
+
+      .prize-card {
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        background: rgba(20, 25, 40, 0.7) !important;
+        animation: slideUp 0.6s ease-out;
+        transition: all 0.3s ease;
+      }
+
+      .prize-card:hover {
+        background: rgba(30, 35, 55, 0.9) !important;
+        border-color: rgba(255, 255, 255, 0.3) !important;
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(255, 255, 255, 0.1);
+      }
+
+      .feature-item {
+        animation: slideUp 0.6s ease-out;
+      }
+
+      .feature-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .feature-item:nth-child(3) {
+        animation-delay: 0.4s;
       }
     </style>
   </head>
   <body class="gradient-bg min-h-screen">
     <!-- Navigation -->
-    <nav class="bg-white/80 backdrop-blur-md border-b border-yellow-200/30">
+    <nav class="navbar-premium bg-opacity-95 backdrop-blur-md border-b border-white/15" style="background: rgba(15, 20, 25, 0.95);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center py-4">
           <div class="flex items-center space-x-3">
-            <i class="fas fa-gift golden-icon text-3xl"></i>
-            <h1 class="text-2xl font-bold warm-brown-text">Lucky Draw</h1>
+            <i class="fas fa-gift nav-icon text-3xl"></i>
+            <h1 class="text-2xl font-bold warm-brown-text">WinsHaven</h1>
           </div>
           <div class="warm-brown-light text-sm">
             <i class="fas fa-calendar-alt mr-2"></i>
@@ -65,23 +225,59 @@
     >
       <div class="max-w-md w-full space-y-8">
         <!-- Header -->
-        <div class="text-center">
+        <div class="text-center fade-in">
           <div
-            class="mx-auto h-24 w-24 golden-accent rounded-full flex items-center justify-center mb-6"
+            class="mx-auto h-24 w-24 golden-accent rounded-full flex items-center justify-center mb-6 floating sparkle shadow-lg"
           >
             <i class="fas fa-star text-4xl text-white"></i>
           </div>
-          <h2 class="text-4xl font-bold warm-brown-text mb-2">Welcome!</h2>
+          <h2 class="text-4xl font-bold warm-brown-text mb-2">Welcome to WinsHaven!</h2>
           <p class="warm-brown-light text-lg">
-            Join our exciting Lucky Draw and win amazing prizes!
+            Join our exciting lucky draw and win amazing prizes!
           </p>
+        </div>
+
+        <!-- Prize Pool Display -->
+        <div class="card-glow backdrop-blur-md rounded-2xl p-6 fade-in">
+          <h3 class="text-2xl font-bold warm-brown-text text-center mb-4 flex items-center justify-center">
+            <i class="fas fa-trophy golden-icon mr-3 text-2xl"></i>
+            Prize Pool
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <!-- First Prize -->
+            <div class="text-center card-glow rounded-xl p-4 border border-cyan-500/30 animate-stagger-1 animate-fade-in">
+              <div class="text-3xl mb-2">🥇</div>
+              <div class="text-2xl font-bold text-cyan-400">₹{{ prize_pool.first }}</div>
+              <div class="text-sm warm-brown-light font-semibold">1st Prize</div>
+            </div>
+
+            <!-- Second Prize -->
+            <div class="text-center card-glow rounded-xl p-4 border border-cyan-500/30 animate-stagger-2 animate-fade-in">
+              <div class="text-3xl mb-2">🥈</div>
+              <div class="text-2xl font-bold text-cyan-300">₹{{ prize_pool.second }}</div>
+              <div class="text-sm warm-brown-light font-semibold">2nd Prize</div>
+            </div>
+
+            <!-- Third Prize -->
+            <div class="text-center card-glow rounded-xl p-4 border border-cyan-500/30 animate-stagger-3 animate-fade-in">
+              <div class="text-3xl mb-2">🥉</div>
+              <div class="text-2xl font-bold text-cyan-200">₹{{ prize_pool.third }}</div>
+              <div class="text-sm warm-brown-light font-semibold">{{ prize_pool.third_count }} Winners</div>
+            </div>
+          </div>
+          <div class="text-center mt-4">
+            <p class="warm-brown-light text-sm">
+              <i class="fas fa-info-circle golden-icon mr-1"></i>
+              Total Prize Pool: <span class="text-cyan-400 font-bold">₹{{ prize_pool.first + prize_pool.second + (prize_pool.third * prize_pool.third_count) }}</span>
+            </p>
+          </div>
         </div>
 
         <!-- Flash Messages -->
         {% with messages = get_flashed_messages(with_categories=true) %} {% if
         messages %} {% for category, message in messages %}
         <div
-          class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+          class="bg-red-900/20 border border-red-500 text-red-300 px-4 py-3 rounded relative"
           role="alert"
         >
           <span class="block sm:inline">{{ message }}</span>
@@ -90,37 +286,31 @@
 
         <!-- User Info Form -->
         <div
-          class="card-glow backdrop-blur-md rounded-2xl p-8 border border-yellow-200/30"
+          class="card-glow backdrop-blur-md rounded-2xl p-8 border-cyan-500/20 form-slide"
         >
           <form
             class="space-y-6"
             method="POST"
             action="{{ url_for('submit_user') }}"
           >
-            <div>
-              <label
-                for="name"
-                class="block text-sm font-medium warm-brown-text mb-2"
-              >
-                <i class="fas fa-user mr-2"></i>Full Name
-              </label>
+            <div class="input-group">
               <input
                 id="name"
                 name="name"
                 type="text"
                 required
-                class="w-full px-4 py-3 bg-white border border-yellow-200 rounded-lg warm-brown-text placeholder-gray-500 input-focus transition-all duration-300 focus:outline-none focus:border-yellow-400"
+                class="w-full px-4 py-3 input-premium input-focus transition-all duration-300 focus:outline-none placeholder-gray-500"
                 placeholder="Enter your full name"
               />
+              <label
+                for="name"
+                class="form-label-premium absolute left-4 -top-2 bg-gradient-to-r from-cyan-500/0 to-cyan-500/0 px-2 text-sm font-medium transition-all duration-300"
+              >
+                <i class="fas fa-user golden-icon mr-2"></i>Full Name
+              </label>
             </div>
 
-            <div>
-              <label
-                for="mobile"
-                class="block text-sm font-medium warm-brown-text mb-2"
-              >
-                <i class="fas fa-mobile-alt mr-2"></i>Mobile Number
-              </label>
+            <div class="input-group">
               <input
                 id="mobile"
                 name="mobile"
@@ -128,35 +318,44 @@
                 required
                 pattern="[0-9]{10}"
                 maxlength="10"
-                class="w-full px-4 py-3 bg-white border border-yellow-200 rounded-lg warm-brown-text placeholder-gray-500 input-focus transition-all duration-300 focus:outline-none focus:border-yellow-400"
+                class="w-full px-4 py-3 input-premium input-focus transition-all duration-300 focus:outline-none placeholder-gray-500"
                 placeholder="Enter 10-digit mobile number"
               />
-              <p class="warm-brown-light text-xs mt-1">Format: 9876543210</p>
+              <label
+                for="mobile"
+                class="form-label-premium absolute left-4 -top-2 bg-gradient-to-r from-cyan-500/0 to-cyan-500/0 px-2 text-sm font-medium transition-all duration-300"
+              >
+                <i class="fas fa-mobile-alt golden-icon mr-2"></i>Mobile Number
+              </label>
+              <p class="warm-brown-light text-xs mt-1">📱 Format: 9876543210</p>
             </div>
 
             <button
               type="submit"
-              class="w-full golden-accent text-white font-bold py-3 px-6 rounded-lg btn-hover transition-all duration-300 flex items-center justify-center space-x-2"
+              id="submit-btn"
+              class="w-full btn-premium golden-accent text-white font-bold py-3 px-6 rounded-lg sparkle button-escape button-disabled transition-all duration-300 flex items-center justify-center space-x-2"
+              disabled
+              title="Please fill in your name and 10-digit mobile number to continue"
             >
               <i class="fas fa-arrow-right"></i>
-              <span>Continue to Payment</span>
+              <span id="button-text">Continue to Payment</span>
             </button>
           </form>
         </div>
 
         <!-- Features -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-          <div class="text-center warm-brown-light">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 fade-in">
+          <div class="text-center warm-brown-light floating animate-stagger-1" style="animation-delay: 0.2s;">
             <i class="fas fa-ticket-alt golden-icon text-2xl mb-2"></i>
-            <p class="text-sm">500 Tickets Available</p>
+            <p class="text-sm font-semibold">🎟️ 1000 Tickets</p>
           </div>
-          <div class="text-center warm-brown-light">
+          <div class="text-center warm-brown-light floating animate-stagger-2" style="animation-delay: 0.4s;">
             <i class="fas fa-rupee-sign golden-icon text-2xl mb-2"></i>
-            <p class="text-sm">₹5 per Ticket</p>
+            <p class="text-sm font-semibold">💰 ₹50 per Ticket</p>
           </div>
-          <div class="text-center warm-brown-light">
+          <div class="text-center warm-brown-light floating animate-stagger-3" style="animation-delay: 0.6s;">
             <i class="fas fa-gift golden-icon text-2xl mb-2"></i>
-            <p class="text-sm">Amazing Prizes</p>
+            <p class="text-sm font-semibold">🎁 Amazing Prizes</p>
           </div>
         </div>
       </div>
@@ -164,10 +363,11 @@
 
     <!-- Footer -->
     <footer
-      class="bg-white/80 backdrop-blur-md border-t border-yellow-200/30 py-4"
+      class="bg-opacity-95 border-t border-white/15 py-4 mt-12 backdrop-blur-md"
+      style="background: rgba(15, 20, 25, 0.95);"
     >
       <div class="max-w-7xl mx-auto px-4 text-center warm-brown-light text-sm">
-        <p>&copy; 2025 Lucky Draw. All rights reserved.</p>
+        <p>✨ &copy; 2025 WinsHaven. All rights reserved. | Premium Lucky Draw Platform</p>
       </div>
     </footer>
 
@@ -181,28 +381,167 @@
           day: "numeric",
         });
 
-      // Mobile number validation
-      document.getElementById("mobile").addEventListener("input", function (e) {
-        this.value = this.value.replace(/[^0-9]/g, "");
+      // Enhanced animations on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        // Add staggered animation to form elements
+        const formElements = document.querySelectorAll('.input-group');
+        formElements.forEach((element, index) => {
+          element.style.animationDelay = `${0.3 + (index * 0.2)}s`;
+          element.classList.add('fade-in');
+        });
+
+        // Add floating animation to golden icons
+        const goldenIcons = document.querySelectorAll('.golden-icon');
+        goldenIcons.forEach((icon, index) => {
+          icon.style.animationDelay = `${index * 0.5}s`;
+        });
+
+        // Add sparkle effect on hover
+        const sparkleElements = document.querySelectorAll('.sparkle');
+        sparkleElements.forEach(element => {
+          element.addEventListener('mouseenter', function() {
+            this.style.animation = 'sparkleRotate 0.8s ease-in-out';
+          });
+          element.addEventListener('mouseleave', function() {
+            this.style.animation = '';
+          });
+        });
       });
 
-      // Form validation
+      // Mobile number validation with animation
+      document.getElementById("mobile").addEventListener("input", function (e) {
+        this.value = this.value.replace(/[^0-9]/g, "");
+        
+        // Add validation animation
+        if (this.value.length === 10) {
+          this.classList.add('border-green-400');
+          this.classList.remove('border-yellow-200');
+        } else {
+          this.classList.remove('border-green-400');
+          this.classList.add('border-yellow-200');
+        }
+        
+        // Check if form is complete
+        checkFormCompletion();
+      });
+      
+      // Name validation
+      document.getElementById("name").addEventListener("input", function (e) {
+        // Check if form is complete
+        checkFormCompletion();
+      });
+      
+      // Function to check if form is complete and enable/disable button
+      function checkFormCompletion() {
+        const name = document.getElementById("name").value.trim();
+        const mobile = document.getElementById("mobile").value.trim();
+        const submitBtn = document.getElementById("submit-btn");
+        const buttonText = document.getElementById("button-text");
+        
+        if (name && mobile.length === 10 && /^\d{10}$/.test(mobile)) {
+          // Form is complete - enable button
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('button-disabled');
+          submitBtn.classList.add('button-enabled');
+          buttonText.textContent = "Continue to Payment";
+          submitBtn.title = "Click to proceed to ticket selection";
+        } else {
+          // Form is incomplete - disable button
+          submitBtn.disabled = true;
+          submitBtn.classList.add('button-disabled');
+          submitBtn.classList.remove('button-enabled');
+          
+          if (!name) {
+            buttonText.textContent = "Enter Your Name First";
+            submitBtn.title = "Please enter your full name";
+          } else if (mobile.length < 10) {
+            buttonText.textContent = "Enter Mobile Number";
+            submitBtn.title = "Please enter a 10-digit mobile number";
+          } else if (!/^\d{10}$/.test(mobile)) {
+            buttonText.textContent = "Invalid Mobile Number";
+            submitBtn.title = "Please enter a valid 10-digit mobile number";
+          }
+        }
+      }
+
+      // Add click effect for disabled button - STABLE VERSION
+      document.getElementById("submit-btn").addEventListener("click", function(e) {
+        if (this.disabled) {
+          e.preventDefault();
+          // Removed escape animation - button stays stable
+          // Just show a subtle shake effect
+          this.style.animation = 'shake 0.3s ease-in-out';
+          setTimeout(() => {
+            this.style.animation = '';
+          }, 300);
+          
+          // Shake the form
+          const form = document.querySelector('form');
+          form.style.animation = 'shake 0.3s ease-in-out';
+          setTimeout(() => {
+            form.style.animation = '';
+          }, 300);
+        }
+      });
+
+      // Enhanced form validation with animations
       document.querySelector("form").addEventListener("submit", function (e) {
         const name = document.getElementById("name").value.trim();
         const mobile = document.getElementById("mobile").value.trim();
+        let isValid = true;
 
+        // Animate name field
         if (!name) {
           e.preventDefault();
-          alert("Please enter your full name");
-          return;
+          const nameField = document.getElementById("name");
+          nameField.classList.add('border-red-400');
+          nameField.style.animation = 'shake 0.5s ease-in-out';
+          setTimeout(() => {
+            nameField.classList.remove('border-red-400');
+            nameField.style.animation = '';
+          }, 500);
+          isValid = false;
         }
 
+        // Animate mobile field
         if (mobile.length !== 10 || !/^\d{10}$/.test(mobile)) {
           e.preventDefault();
-          alert("Please enter a valid 10-digit mobile number");
-          return;
+          const mobileField = document.getElementById("mobile");
+          mobileField.classList.add('border-red-400');
+          mobileField.style.animation = 'shake 0.5s ease-in-out';
+          setTimeout(() => {
+            mobileField.classList.remove('border-red-400');
+            mobileField.style.animation = '';
+          }, 500);
+          isValid = false;
+        }
+
+        // Success animation
+        if (isValid) {
+          const submitBtn = document.querySelector('button[type="submit"]');
+          submitBtn.style.animation = 'pulse 0.6s ease-in-out';
+          setTimeout(() => {
+            submitBtn.style.animation = '';
+          }, 600);
         }
       });
+
+      // Add shake animation for validation errors
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          25% { transform: translateX(-5px); }
+          75% { transform: translateX(5px); }
+        }
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+          100% { transform: scale(1); }
+        }
+        /* Removed buttonEscape animation - button stays stable */
+      `;
+      document.head.appendChild(style);
     </script>
   </body>
 </html>

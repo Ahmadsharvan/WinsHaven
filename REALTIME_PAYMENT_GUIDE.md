@@ -1,52 +1,37 @@
-# 🎯 Lucky Draw - Real-Time Payment Integration Guide
+# 🎯 Lucky Draw - Manual Payment System Guide
 
 ## 🔹 **What You've Got Now**
 
-✅ **Real-time payment system** with Razorpay integration  
-✅ **WebSocket support** for instant payment confirmation  
-✅ **Automatic booking completion** when payment is received  
+✅ **Manual payment verification system** with UPI integration  
+✅ **WebSocket support** for real-time status updates  
+✅ **Manual booking completion** when payment is verified  
 ✅ **Darker background** on all pages  
 ✅ **Professional payment interface** with status tracking
 
-## 🔹 **How It Works (Real-Time Flow)**
+## 🔹 **How It Works (Manual Payment Flow)**
 
 1. **User selects tickets** → **Clicks "Proceed to Payment"**
-2. **Razorpay order created** → **Payment page shows with real-time status**
-3. **User clicks "Pay"** → **Razorpay payment window opens**
-4. **User completes payment** → **WebSocket instantly confirms payment**
-5. **Booking automatically completed** → **Success page shown**
-6. **Data saved to Excel** → **Tickets marked as booked**
+2. **Payment page shows** → **User sees UPI details and QR code**
+3. **User completes UPI payment** → **Enters transaction ID**
+4. **Admin verifies payment** → **Booking completed manually**
+5. **Success page shown** → **Data saved to Excel**
+6. **Tickets marked as booked** → **Process complete**
 
 ## 🔹 **What You Need to Do**
 
-### **Step 1: Create Razorpay Account**
-
-1. **Go to**: [razorpay.com](https://razorpay.com)
-2. **Sign up** as a business account
-3. **Complete KYC verification**:
-   - Business PAN Card
-   - Bank Account Details
-   - Business Address Proof
-   - Business Registration (if applicable)
-4. **Get API Keys**:
-   - Go to Settings → API Keys
-   - Copy your **Key ID** and **Key Secret**
-
-### **Step 2: Configure the Application**
+### **Step 1: Configure UPI Details**
 
 1. **Open**: `lucky_draw/app_realtime.py`
-2. **Replace these lines**:
+2. **Replace the UPI ID**:
    ```python
-   RAZORPAY_KEY_ID = "rzp_test_YOUR_KEY_ID"  # Replace with your Key ID
-   RAZORPAY_KEY_SECRET = "YOUR_KEY_SECRET"    # Replace with your Key Secret
+   UPI_ID = "your-upi-id@bank"  # Replace with your actual UPI ID
    ```
 
-### **Step 3: Set Up Webhooks (For Production)**
+### **Step 2: Set Up Payment Verification**
 
-1. **In Razorpay Dashboard** → **Settings** → **Webhooks**
-2. **Add webhook URL**: `http://your-domain.com/razorpay_webhook`
-3. **Select events**: `payment.captured`
-4. **Copy webhook secret** and add to your code
+1. **Configure your UPI app** to receive payments
+2. **Set up QR code** for easy payment scanning
+3. **Train admin users** on payment verification process
 
 ### **Step 4: Run the Application**
 
@@ -74,14 +59,14 @@ python app_realtime.py
 
 ## 🔹 **Features Included**
 
-### **Real-Time Payment Features:**
+### **Manual Payment Features:**
 
-- ✅ **Instant payment confirmation** via WebSockets
-- ✅ **Live payment status** updates
-- ✅ **Automatic booking completion**
-- ✅ **Razorpay integration** with UPI support
-- ✅ **Webhook handling** for server-side confirmation
-- ✅ **Fallback manual payment** system
+- ✅ **UPI payment integration** with QR code support
+- ✅ **Live payment status** updates via WebSockets
+- ✅ **Manual booking completion** with admin verification
+- ✅ **Transaction ID verification** system
+- ✅ **Real-time status tracking** for payments
+- ✅ **Admin dashboard** for payment management
 
 ### **UI/UX Features:**
 
