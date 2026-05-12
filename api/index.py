@@ -1,48 +1,42 @@
+#!/usr/bin/env python3
+"""
+Vercel serverless function entry point for WinsHaven Flask app
+"""
 import sys
 import os
 
-# Ensure we're in the right directory
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(current_dir)
+# Setup paths
+api_dir = os.path.dirname(os.path.abspath(__file__))
+project_dir = os.path.dirname(api_dir)
 
-# Add parent to path
-sys.path.insert(0, parent_dir)
+# Add project to Python path
+if project_dir not in sys.path:
+    sys.path.insert(0, project_dir)
 
-# Set working directory
-os.chdir(parent_dir)
+# Change working directory to project root
+os.chdir(project_dir)
 
-# Create data directory
-data_dir = os.path.join(parent_dir, "data")
+# Create data directory for tickets and bookings
+data_dir = os.path.join(project_dir, "data")
 os.makedirs(data_dir, exist_ok=True)
 
-# Now import app
+# Import and configure Flask app
 try:
     from app import app
-    print("✓ App imported successfully from parent directory")
-except ImportError as e:
-    print(f"✗ Failed to import app: {e}")
+    print("[✓] Successfully loaded Flask app from app.py")
+except Exception as e:
+    print(f"[✗] Error loading app: {str(e)}")
     import traceback
     traceback.print_exc()
     
-    # Fallback minimal app
-    from flask import Flask
+    # Create minimal fallback app
+    from flask import Flask, jsonify
     app = Flask(__name__)
     
     @app.route('/')
-    def error():
-        return f"""
-        <h1>⚠️ Error Loading WinsHaven</h1>
-        <p>Failed to import Flask app</p>
-        <pre>{str(e)}</pre>
-        """, 500
+    def error_page():
+        return jsonify({"error": f"Failed to load app: {str(e)}"}), 500
 
-# Vercel requires these functions for proper WSGI handling
-def handler(request):
-    """Handle Vercel requests"""
-    return app(request.environ, request.start_response)
-
-# Also export app directly for Vercel's Python runtime
-if __name__ != "__main__":
-    # Make sure app is accessible at module level for Vercel
-    pass
-
+# Export app for Vercel
+if __name__ == "__main__":
+    app.run(debug=False)
